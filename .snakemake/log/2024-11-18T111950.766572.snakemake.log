@@ -1,0 +1,100 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+The flag 'directory' used in rule gtdbtk is only valid for outputs, not inputs.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 20
+Rules claiming more threads will be scaled down.
+Job stats:
+job                       count    min threads    max threads
+----------------------  -------  -------------  -------------
+all                           1              1              1
+bowtie_mapping                2             20             20
+calculate_tpm                 2             20             20
+filter_contigs                2             20             20
+get_gtf                       2             20             20
+kofam_annotation              2             20             20
+kofam_summary                 2             20             20
+merge_tpm_annotations         2             20             20
+picard_mark_duplicates        2             20             20
+read_length                   2             20             20
+total                        19              1             20
+
+Select jobs to execute...
+
+[Mon Nov 18 11:19:51 2024]
+rule read_length:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_forward_paired.fq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754.readlength
+    jobid: 43
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754.readlength
+    wildcards: sample=SRR6429754
+    threads: 20
+    resources: tmpdir=/tmp
+
+[Mon Nov 18 11:19:53 2024]
+Finished job 43.
+1 of 19 steps (5%) done
+Select jobs to execute...
+
+[Mon Nov 18 11:19:53 2024]
+rule read_length:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_forward_paired.fq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652.readlength
+    jobid: 35
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652.readlength
+    wildcards: sample=SRR2239652
+    threads: 20
+    resources: tmpdir=/tmp
+
+[Mon Nov 18 11:20:05 2024]
+Finished job 35.
+2 of 19 steps (11%) done
+Select jobs to execute...
+
+[Mon Nov 18 11:20:05 2024]
+rule get_gtf:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_prokka/SRR6429754_annotated.gff
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_prokka/SRR6429754_annotated.gtf
+    jobid: 42
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_prokka/SRR6429754_annotated.gtf
+    wildcards: sample=SRR6429754
+    threads: 20
+    resources: tmpdir=/tmp
+
+[Mon Nov 18 11:20:06 2024]
+Finished job 42.
+3 of 19 steps (16%) done
+Select jobs to execute...
+
+[Mon Nov 18 11:20:06 2024]
+rule get_gtf:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_prokka/SRR2239652_annotated.gff
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_prokka/SRR2239652_annotated.gtf
+    jobid: 34
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_prokka/SRR2239652_annotated.gtf
+    wildcards: sample=SRR2239652
+    threads: 20
+    resources: tmpdir=/tmp
+
+[Mon Nov 18 11:20:07 2024]
+Finished job 34.
+4 of 19 steps (21%) done
+Select jobs to execute...
+
+[Mon Nov 18 11:20:07 2024]
+rule kofam_annotation:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_prokka/SRR2239652_annotated.faa
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_kofam_oneline.txt
+    jobid: 36
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_kofam_oneline.txt
+    wildcards: sample=SRR2239652
+    threads: 20
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/kofamscan/kofamscan-1.3.0.sif
+Terminating processes on user request, this might take some time.
+Cancelling snakemake on user request.

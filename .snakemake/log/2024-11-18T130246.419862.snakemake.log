@@ -1,0 +1,12 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+The flag 'directory' used in rule gtdbtk is only valid for outputs, not inputs.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+MissingInputException in rule all  in line 25 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/Snakefile:
+Missing input files for rule all:
+    affected files:
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_kofam_tpm_summary.txt
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_kofam_tpm_summary.txt

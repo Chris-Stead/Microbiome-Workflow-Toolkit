@@ -1,0 +1,6 @@
+The flag 'directory' used in rule gtdbtk is only valid for outputs, not inputs.
+Building DAG of jobs...
+MissingInputException in line 25 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/Snakefile:
+Missing input files for rule all:
+/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_gtdbtk/
+/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_gtdbtk/

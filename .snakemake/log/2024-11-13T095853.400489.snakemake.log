@@ -1,0 +1,3 @@
+SyntaxError in line 15 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/mags.smk:
+Unexpected keyword concoct in rule definition (mags.smk, line 15)
+  File "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/Snakefile", line 14, in <module>

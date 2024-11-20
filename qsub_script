@@ -1,0 +1,23 @@
+#!/bin/bash --login
+#$ -cwd             # Job will run from the current directory
+#$ -pe smp.pe 20
+#$ -N snakemake    	# Give the job a name
+#$ -m bea	    	# Email on start, end or abort
+#$ -M  #your email
+
+# Set paths
+export APPTAINER_HOME=$HOME
+export APPTAINER_BINDPATH=/mnt
+export APPTAINER=/mnt
+export GTDBTK_DATA_PATH="/mnt/seaes01-data01/nixon-microbiome/databases/gtdbtk_data/release220"
+export MPLCONFIGDIR=/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/antimash_temp
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
+export GENOMAD_DB=/mnt/data/genomad_db_v1.7
+
+#run snakemake
+module load apps/gcc/apptainer/1.0.3
+module load apps/binapps/anaconda3/2021.11
+
+source activate snakemake
+snakemake  --cores $NSLOTS --max-threads $NSLOTS --rerun-incomplete --use-singularity --configfile config.yaml -s Snakefile

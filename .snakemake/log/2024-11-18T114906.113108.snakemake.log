@@ -1,0 +1,64 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+The flag 'directory' used in rule gtdbtk is only valid for outputs, not inputs.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 20
+Rules claiming more threads will be scaled down.
+Job stats:
+job                       count    min threads    max threads
+----------------------  -------  -------------  -------------
+all                           1              1              1
+bowtie_mapping                1             20             20
+calculate_tpm                 2             20             20
+filter_contigs                1             20             20
+kofam_annotation              1             20             20
+kofam_summary                 2             20             20
+merge_tpm_annotations         2             20             20
+picard_mark_duplicates        2             20             20
+total                        12              1             20
+
+Select jobs to execute...
+
+[Mon Nov 18 11:49:07 2024]
+rule picard_mark_duplicates:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_filtered_contigs.map.sorted.bam
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_filtered_contigs.map.markdup.bam, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_filtered_contigs.map.markdup.metrics
+    jobid: 39
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_filtered_contigs.map.markdup.bam
+    wildcards: sample=SRR6429754
+    threads: 20
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/picard/picard-2.27.5.sif
+[Mon Nov 18 11:49:53 2024]
+Finished job 39.
+1 of 12 steps (8%) done
+Select jobs to execute...
+
+[Mon Nov 18 11:49:53 2024]
+rule calculate_tpm:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_filtered_contigs.map.markdup.bam, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_prokka/SRR6429754_annotated.gtf, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754.readlength
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754.tpm
+    jobid: 38
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754.tpm; Input files updated by another job: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_filtered_contigs.map.markdup.bam
+    wildcards: sample=SRR6429754
+    threads: 20
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/htseq/htseq-2.0.2.sif
+[Mon Nov 18 11:49:55 2024]
+Error in rule calculate_tpm:
+    jobid: 38
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_filtered_contigs.map.markdup.bam, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_prokka/SRR6429754_annotated.gtf, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754.readlength
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754.tpm
+    shell:
+        python /mnt/seaes01-data01/nixon-microbiome/shared/scripts/calculate_tpm.py -i /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_filtered_contigs.map.markdup.bam -g /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_prokka/SRR6429754_annotated.gtf -r /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754.readlength -o /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754.tpm
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-11-18T114906.113108.snakemake.log

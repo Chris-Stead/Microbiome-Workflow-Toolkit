@@ -1,0 +1,2 @@
+SyntaxError in line 27 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/Snakefile:
+Unexpected keyword expand in rule definition (Snakefile, line 27)

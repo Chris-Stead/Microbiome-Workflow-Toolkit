@@ -1,0 +1,4 @@
+Config file config.yaml is extended by additional config specified via the command line.
+SyntaxError in line 63 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/assemble.smk:
+Unexpected keyword contig in rule definition (assemble.smk, line 63)
+  File "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/Snakefile", line 12, in <module>

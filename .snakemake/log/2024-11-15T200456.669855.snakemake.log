@@ -1,0 +1,43 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+The flag 'directory' used in rule gtdbtk is only valid for outputs, not inputs.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 20
+Rules claiming more threads will be scaled down.
+Job stats:
+job       count    min threads    max threads
+------  -------  -------------  -------------
+all           1              1              1
+coverm        1             20             20
+gtdbtk        1             20             20
+total         3              1             20
+
+Select jobs to execute...
+
+[Fri Nov 15 20:04:57 2024]
+rule gtdbtk:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_refined_mag_directory, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_refined_mag_directory/metawrap_50_10_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_gtdbtk_temp
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_gtdbtk
+    jobid: 20
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_gtdbtk
+    wildcards: sample=SRR6429754
+    threads: 20
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/gtdbtk/gtdbtk_2.4.0.sif
+[Fri Nov 15 20:04:57 2024]
+Error in rule gtdbtk:
+    jobid: 20
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_refined_mag_directory, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_refined_mag_directory/metawrap_50_10_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_gtdbtk_temp
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_gtdbtk
+    shell:
+        
+        gtdbtk classify_wf --genome_dir /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_refined_mag_directory/metawrap_50_10_bins --mash_db /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_gtdbtk_temp --extension .fa --out_dir /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_gtdbtk --cpus 20
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-11-15T200456.669855.snakemake.log

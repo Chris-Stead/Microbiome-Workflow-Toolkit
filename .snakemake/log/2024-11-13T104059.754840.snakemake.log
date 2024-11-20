@@ -1,0 +1,7 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+AttributeError in line 8 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/mags.smk:
+invalid name for input, output, wildcard, params or log: reverse is reserved for internal use
+  File "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/Snakefile", line 14, in <module>
+  File "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/mags.smk", line 8, in <module>

@@ -1,0 +1,52 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 20
+Rules claiming more threads will be scaled down.
+Job stats:
+job               count    min threads    max threads
+--------------  -------  -------------  -------------
+all                   1              1              1
+bin_refinement        1             20             20
+coverm                2             20             20
+gtdbtk                2             20             20
+metawrap_bin          1             20             20
+symlink_reads         1              1              1
+total                 8              1             20
+
+Select jobs to execute...
+
+[Fri Nov 15 11:40:21 2024]
+rule coverm:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_reverse_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_refined_mag_directory, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_refined_mag_directory/metawrap_50_10_bins
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_coverm_coverage.tsv
+    jobid: 21
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_coverm_coverage.tsv
+    wildcards: sample=SRR2239652
+    threads: 20
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/coverm/coverm.sif
+[Fri Nov 15 11:41:03 2024]
+Finished job 21.
+1 of 8 steps (12%) done
+Select jobs to execute...
+
+[Fri Nov 15 11:41:03 2024]
+rule gtdbtk:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_refined_mag_directory, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_refined_mag_directory/metawrap_50_10_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_gtdbtk_temp
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_gtdbtk
+    jobid: 19
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_gtdbtk
+    wildcards: sample=SRR2239652
+    threads: 20
+    resources: tmpdir=/tmp
+
+RuleException in rule gtdbtk  in line 68 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/mags.smk:
+AttributeError: 'OutputFiles' object has no attribute 'gtdbtk_temp', when formatting the following:
+
+	mkdir {output.gtdbtk_temp}
+        gtdbtk classify_wf --genome_dir {input.refined_mag_directory_bins} --mash_db {input.gtdbtk_temp} --extension .fa --out_dir {output.taxonomy} --cpus {threads}
+        

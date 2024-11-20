@@ -1,0 +1,4 @@
+Building DAG of jobs...
+WorkflowError:
+Minimum singularity version is 2.4.1.
+  File "/usr/lib/python3/dist-packages/snakemake/deployment/singularity.py", line 48, in __init__

@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 57 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/mags.smk:
+Missing input files for rule gtdbtk:
+/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_refined_mag_directory/

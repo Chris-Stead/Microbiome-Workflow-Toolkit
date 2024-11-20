@@ -1,0 +1,49 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 20
+Rules claiming more threads will be scaled down.
+Job stats:
+job               count    min threads    max threads
+--------------  -------  -------------  -------------
+all                   1              1              1
+bin_refinement        2             20             20
+coverm                2             20             20
+fastqc                1             20             20
+gtdbtk                2             20             20
+metaquast             2             20             20
+metawrap_bin          2             20             20
+prokka                2             20             20
+spades                2             20             20
+symlink_reads         2              1              1
+total                18              1             20
+
+Select jobs to execute...
+
+[Wed Nov 13 12:31:38 2024]
+rule spades:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_reverse_paired.fq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_assembly/contigs.fasta
+    jobid: 5
+    reason: Forced execution
+    wildcards: sample=SRR2239652
+    threads: 20
+    resources: tmpdir=/tmp
+
+Skipped removing non-empty directory /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_assembly/contigs.fasta
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/spades/spades-3.15.5.sif
+Terminating processes on user request, this might take some time.
+[Wed Nov 13 12:31:53 2024]
+Error in rule spades:
+    jobid: 5
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_reverse_paired.fq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_assembly/contigs.fasta
+    shell:
+        
+        metaspades.py -m 2000 -1 /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_forward_paired.fq -2 /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_reverse_paired.fq -o /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_assembly/contigs.fasta -t 20
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Complete log: .snakemake/log/2024-11-13T123137.574342.snakemake.log

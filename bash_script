@@ -1,0 +1,12 @@
+# Make CSF filesystems available to the container
+export APPTAINER_HOME=$HOME
+export APPTAINER_BINDPATH=/mnt
+export APPTAINER=/mnt
+export GTDBTK_DATA_PATH="/mnt/seaes01-data01/nixon-microbiome/databases/gtdbtk_data/release220"
+export MPLCONFIGDIR=/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/antimash_temp
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
+export GENOMAD_DB=/mnt/data/genomad_db_v1.7
+
+#run snakemake
+snakemake  --cores 20 --rerun-incomplete --use-singularity --configfile config.yaml -s Snakefile

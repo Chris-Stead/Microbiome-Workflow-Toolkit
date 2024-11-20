@@ -1,0 +1,59 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 10
+Rules claiming more threads will be scaled down.
+Job stats:
+job            count    min threads    max threads
+-----------  -------  -------------  -------------
+all                1              1              1
+fastqc             2             10             10
+metaquast          2             10             10
+prokka             2             10             10
+spades             2             10             10
+trimmomatic        1             10             10
+total             10              1             10
+
+Select jobs to execute...
+
+[Fri Nov  8 14:27:37 2024]
+rule fastqc:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_reverse_paired.fq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_fastqc
+    jobid: 3
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_fastqc
+    wildcards: sample=SRR2239652
+    threads: 10
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/fastqc/fastqc-0.11.9.sif
+[Fri Nov  8 14:28:21 2024]
+Finished job 3.
+1 of 10 steps (10%) done
+Select jobs to execute...
+
+[Fri Nov  8 14:28:21 2024]
+rule spades:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_reverse_paired.fq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_contigs.fasta
+    jobid: 5
+    reason: Forced execution
+    wildcards: sample=SRR2239652
+    threads: 10
+    resources: tmpdir=/tmp
+
+Skipped removing non-empty directory /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_contigs.fasta
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/spades/spades-3.15.5.sif
+ImproperOutputException in rule spades  in line 35 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/assemble.smk:
+Outputs of incorrect type (directories when expecting files or vice versa). Output directories must be flagged with directory(). for rule spades:
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_contigs.fasta
+    wildcards: sample=SRR2239652
+    affected files:
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_contigs.fasta
+Removing output files of failed job spades since they might be corrupted:
+/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_contigs.fasta
+Skipped removing non-empty directory /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_contigs.fasta
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-11-08T142737.322731.snakemake.log

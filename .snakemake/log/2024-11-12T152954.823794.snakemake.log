@@ -1,0 +1,8 @@
+Building DAG of jobs...
+MissingInputException in rule trimmomatic in file /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/assemble.smk, line 5:
+Missing input files for rule trimmomatic:
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_refined_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_refined_forward_unpaired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_refined_reverse_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR2239652_refined_reverse_unpaired.fq
+    wildcards: sample=SRR2239652_refined
+    affected files:
+        /mnt/seaes01-data01/nixon-microbiome/shared/CS/geothermal1/SRR2239652_refined_2.fastq
+        /mnt/seaes01-data01/nixon-microbiome/shared/CS/geothermal1/SRR2239652_refined_1.fastq

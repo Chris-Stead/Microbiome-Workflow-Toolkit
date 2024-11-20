@@ -1,0 +1,83 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 10
+Rules claiming more threads will be scaled down.
+Job stats:
+job            count    min threads    max threads
+-----------  -------  -------------  -------------
+all                1              1              1
+fastqc             2             10             10
+metaquast          2             10             10
+prokka             2             10             10
+spades             2             10             10
+trimmomatic        2             10             10
+total             11              1             10
+
+Select jobs to execute...
+
+[Fri Nov  8 17:45:44 2024]
+rule trimmomatic:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/CS/geothermal1/SRR6429754_1.fastq, /mnt/seaes01-data01/nixon-microbiome/shared/CS/geothermal1/SRR6429754_2.fastq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_forward_unpaired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_reverse_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_reverse_unpaired.fq
+    log: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_trimmomatic.log
+    jobid: 2
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_reverse_paired.fq
+    wildcards: sample=SRR6429754
+    threads: 10
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/trimmomatic/trimmomatic-0.39.sif
+[Fri Nov  8 17:45:50 2024]
+Finished job 2.
+1 of 11 steps (9%) done
+Select jobs to execute...
+
+[Fri Nov  8 17:45:50 2024]
+rule fastqc:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_reverse_paired.fq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_fastqc
+    jobid: 4
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_fastqc; Input files updated by another job: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_reverse_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_forward_paired.fq
+    wildcards: sample=SRR6429754
+    threads: 10
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/fastqc/fastqc-0.11.9.sif
+[Fri Nov  8 17:46:02 2024]
+Finished job 4.
+2 of 11 steps (18%) done
+Select jobs to execute...
+
+[Fri Nov  8 17:46:02 2024]
+rule spades:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_reverse_paired.fq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_assembly, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_assembly/contigs.fasta
+    jobid: 6
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_assembly/contigs.fasta, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_assembly; Input files updated by another job: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_reverse_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_forward_paired.fq
+    wildcards: sample=SRR6429754
+    threads: 10
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/spades/spades-3.15.5.sif
+[Fri Nov  8 17:55:42 2024]
+Finished job 6.
+3 of 11 steps (27%) done
+Select jobs to execute...
+
+[Fri Nov  8 17:55:42 2024]
+rule prokka:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_assembly/contigs.fasta
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_prokka/SRR6429754_annotated.gff, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_prokka/SRR6429754_annotated.tsv, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_prokka/SRR6429754_annotated.faa
+    jobid: 8
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_prokka/SRR6429754_annotated.gff, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_prokka/SRR6429754_annotated.tsv, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_prokka/SRR6429754_annotated.faa; Input files updated by another job: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/SRR6429754_assembly/contigs.fasta
+    wildcards: sample=SRR6429754
+    threads: 10
+    resources: tmpdir=/tmp
+
+RuleException in rule prokka  in line 61 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/assemble.smk:
+NameError: The name "'output_dir'" is unknown in this context. Please make sure that you defined that variable. Also note that braces not used for variable access have to be escaped by repeating them, i.e. {{print $1}}, when formatting the following:
+
+        prokka --outdir {config['output_dir']}/{{wildcards.sample}}_prokka                --prefix {{wildcards.sample}}_annotated                --force --cpus {threads} --metagenome {input.contigs}
+        
