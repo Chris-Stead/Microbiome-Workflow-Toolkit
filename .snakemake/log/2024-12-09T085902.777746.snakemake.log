@@ -1,0 +1,167 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 20
+Rules claiming more threads will be scaled down.
+Job stats:
+job                   count    min threads    max threads
+------------------  -------  -------------  -------------
+all                       1              1              1
+bin_refinement            9             15             15
+coverm                   10             15             15
+cut                       8             15             15
+fastqc                    4             15             15
+filter_seq_contigs       10             15             15
+gtdbtk                   10             15             15
+gtdbtk_folder            10              1              1
+kaiju_refseq              4             15             15
+kaiju_table_Class         6             15             15
+kaiju_table_Genus         4             15             15
+megahit                   7             15             15
+metaquast                10             15             15
+metawrap_bin              7             15             15
+prokka                   10             15             15
+symlink_reads             3              1              1
+trimmomatic               3             15             15
+total                   116              1             15
+
+Select jobs to execute...
+
+[Mon Dec  9 08:59:04 2024]
+rule gtdbtk_folder:
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O3_gtdbtk_temporary_directory
+    jobid: 118
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O3_gtdbtk_temporary_directory
+    wildcards: sample=O3
+    resources: tmpdir=/tmp
+
+
+[Mon Dec  9 08:59:04 2024]
+rule gtdbtk_folder:
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O4_gtdbtk_temporary_directory
+    jobid: 120
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O4_gtdbtk_temporary_directory
+    wildcards: sample=O4
+    resources: tmpdir=/tmp
+
+
+[Mon Dec  9 08:59:04 2024]
+rule gtdbtk_folder:
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/F2_gtdbtk_temporary_directory
+    jobid: 104
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/F2_gtdbtk_temporary_directory
+    wildcards: sample=F2
+    resources: tmpdir=/tmp
+
+
+[Mon Dec  9 08:59:04 2024]
+rule trimmomatic:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/symlink_staging/O2_1.fastq.gz, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/symlink_staging/O2_2.fastq.gz
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O2_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O2_forward_unpaired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O2_reverse_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O2_reverse_unpaired.fq
+    log: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O2_trimmomatic.log
+    jobid: 8
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O2_reverse_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O2_forward_paired.fq
+    wildcards: sample=O2
+    threads: 15
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/trimmomatic/trimmomatic-0.39.sif
+
+[Mon Dec  9 08:59:04 2024]
+rule gtdbtk_folder:
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_gtdbtk_temporary_directory
+    jobid: 110
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_gtdbtk_temporary_directory
+    wildcards: sample=N2
+    resources: tmpdir=/tmp
+
+
+[Mon Dec  9 08:59:04 2024]
+rule gtdbtk_folder:
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_gtdbtk_temporary_directory
+    jobid: 112
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_gtdbtk_temporary_directory
+    wildcards: sample=N3
+    resources: tmpdir=/tmp
+
+[Mon Dec  9 08:59:04 2024]
+Finished job 118.
+1 of 116 steps (1%) done
+[Mon Dec  9 08:59:04 2024]
+Finished job 120.
+2 of 116 steps (2%) done
+[Mon Dec  9 08:59:04 2024]
+Finished job 104.
+3 of 116 steps (3%) done
+Select jobs to execute...
+
+[Mon Dec  9 08:59:04 2024]
+rule gtdbtk_folder:
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/F3_gtdbtk_temporary_directory
+    jobid: 106
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/F3_gtdbtk_temporary_directory
+    wildcards: sample=F3
+    resources: tmpdir=/tmp
+
+
+[Mon Dec  9 08:59:04 2024]
+rule gtdbtk_folder:
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_gtdbtk_temporary_directory
+    jobid: 114
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_gtdbtk_temporary_directory
+    wildcards: sample=O1
+    resources: tmpdir=/tmp
+
+
+[Mon Dec  9 08:59:04 2024]
+rule gtdbtk_folder:
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N1_gtdbtk_temporary_directory
+    jobid: 108
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N1_gtdbtk_temporary_directory
+    wildcards: sample=N1
+    resources: tmpdir=/tmp
+
+[Mon Dec  9 08:59:05 2024]
+Finished job 110.
+4 of 116 steps (3%) done
+[Mon Dec  9 08:59:05 2024]
+Finished job 112.
+5 of 116 steps (4%) done
+Select jobs to execute...
+
+[Mon Dec  9 08:59:05 2024]
+rule gtdbtk_folder:
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/F1_gtdbtk_temporary_directory
+    jobid: 102
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/F1_gtdbtk_temporary_directory
+    wildcards: sample=F1
+    resources: tmpdir=/tmp
+
+
+[Mon Dec  9 08:59:05 2024]
+rule gtdbtk_folder:
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O2_gtdbtk_temporary_directory
+    jobid: 116
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O2_gtdbtk_temporary_directory
+    wildcards: sample=O2
+    resources: tmpdir=/tmp
+
+[Mon Dec  9 08:59:05 2024]
+Finished job 106.
+6 of 116 steps (5%) done
+[Mon Dec  9 08:59:05 2024]
+Finished job 114.
+7 of 116 steps (6%) done
+[Mon Dec  9 08:59:05 2024]
+Finished job 108.
+8 of 116 steps (7%) done
+Select jobs to execute...
+[Mon Dec  9 08:59:05 2024]
+Finished job 102.
+9 of 116 steps (8%) done
+[Mon Dec  9 08:59:05 2024]
+Finished job 116.
+10 of 116 steps (9%) done

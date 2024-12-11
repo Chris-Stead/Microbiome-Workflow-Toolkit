@@ -1,0 +1,49 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 20
+Rules claiming more threads will be scaled down.
+Job stats:
+job                   count    min threads    max threads
+------------------  -------  -------------  -------------
+all                       1              1              1
+bin_refinement            9             15             15
+coverm                   10             15             15
+cut                       8             15             15
+fastqc                    4             15             15
+filter_seq_contigs       10             15             15
+gtdbtk                   10             15             15
+kaiju_refseq              4             15             15
+kaiju_table_Class         6             15             15
+kaiju_table_Genus         4             15             15
+megahit                   7             15             15
+metaquast                10             15             15
+metawrap_bin              7             15             15
+prokka                   10             15             15
+symlink_reads             3              1              1
+trimmomatic               3             15             15
+total                   106              1             15
+
+Select jobs to execute...
+
+[Mon Dec  9 20:22:40 2024]
+rule gtdbtk:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_refined_mag_directory, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_refined_mag_directory/metawrap_50_10_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_gtdbtk_temporary_directory
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_gtdbtk
+    jobid: 117
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_gtdbtk
+    wildcards: sample=O1
+    threads: 15
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/gtdbtk/gtdbtk_2.4.0.sif
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule gtdbtk  in line 68 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/mags.smk:
+Job Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_gtdbtk completed successfully, but some output files are missing. 117
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-12-09T202238.986506.snakemake.log

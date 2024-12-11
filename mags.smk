@@ -14,7 +14,7 @@ rule symlink_reads:
         rev_symlink=temp(f"{config['output_dir']}/temp/{{sample}}_sym_2.fastq")
     shell:
         """
-        mkdir -p {{config['output_dir']}}/temp
+       # mkdir -p {{config['output_dir']}}/temp
         ln -sf {input.forward_paired} {output.forward_symlink}
         ln -sf {input.rev_paired} {output.rev_symlink}
         """
@@ -22,7 +22,7 @@ rule symlink_reads:
 # Rule for MAGs binning using MetaWrap
 rule metawrap_bin:
     input:
-        contigs=f"{config['output_dir']}/{{sample}}_assembly/contigs.fasta",
+        contigs=f"{config['output_dir']}/{{sample}}_contigs_filtered.fa",
         forward_symlink=f"{config['output_dir']}/temp/{{sample}}_sym_1.fastq",
         rev_symlink=f"{config['output_dir']}/temp/{{sample}}_sym_2.fastq"
     output:
@@ -30,7 +30,7 @@ rule metawrap_bin:
 	concoct_dir=directory(f"{config['output_dir']}/{{sample}}_mags_bins/concoct_bins"),
         maxbin2_dir=directory(f"{config['output_dir']}/{{sample}}_mags_bins/maxbin2_bins"),
         metabat_dir=directory(f"{config['output_dir']}/{{sample}}_mags_bins/metabat2_bins")
-    singularity:"/opt/containers/metawrap/metawrap-1.3.0.sif"
+    singularity:f"{config['containers_dir']}/metawrap/metawrap-1.3.0_EC_build.sif"
     threads: config["max_threads"]
     shell:
         """
@@ -49,7 +49,7 @@ rule bin_refinement:
         refined_mag_directory=directory(f"{config['output_dir']}/{{sample}}_refined_mag_directory"),
 	refined_mag_directory_bins=directory(f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_50_10_bins")
 
-    singularity:"/opt/containers/metawrap/metawrap-1.3.0.sif"
+    singularity:f"{config['containers_dir']}/metawrap/metawrap-1.3.0_EC_build.sif"
     threads: config["max_threads"]
     shell:
         """
@@ -59,17 +59,17 @@ rule bin_refinement:
 # Rule for GTDB-Tk classification
 rule gtdbtk_folder:
     output:
-        gtdbtk_temp=directory(f"{config['output_dir']}/{{sample}}_gtdbtk_temp")
+        gtdbtk_temp=directory(f"{config['output_dir']}/{{sample}}_gtdbtk_temporary_directory")
     shell:
         """
-        mkdir -p {output.gtdbtk}
+        mkdir -p {output.gtdbtk_temp}
         """
 
 rule gtdbtk:
     input: 
         refined_mag_directory=f"{config['output_dir']}/{{sample}}_refined_mag_directory",
 	refined_mag_directory_bins=f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_50_10_bins",
-	gtdbtk_temp=f"{config['output_dir']}/{{sample}}_gtdbtk_temp"
+	gtdbtk_temp=f"{config['output_dir']}/{{sample}}_gtdbtk_temporary_directory"
     output:
         taxonomy=directory(f"{config['output_dir']}/{{sample}}_gtdbtk")
     singularity: f"{config['containers_dir']}/gtdbtk/gtdbtk_2.4.0.sif"
@@ -77,7 +77,7 @@ rule gtdbtk:
     shell:
         """
         export GTDBTK_DATA_PATH="/mnt/seaes01-data01/nixon-microbiome/databases/gtdbtk_data/release220"
-	gtdbtk classify_wf --genome_dir {input.refined_mag_directory_bins} --mash_db {input.gtdbtk_temp} --extension .fa --out_dir {output.taxonomy} --cpus {threads}
+	gtdbtk classify_wf --genome_dir {input.refined_mag_directory_bins} --extension .fa --mash_db {input.gtdbtk_temp} --out_dir {output.taxonomy} --cpus {threads} --pplacer_cpus 1 
         """
 
 # Rule for CoverM genome coverage

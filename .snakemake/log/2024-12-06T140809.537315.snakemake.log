@@ -1,0 +1,11 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+MissingInputException in rule gtdbtk  in line 68 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/mags.smk:
+Missing input files for rule gtdbtk:
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/F1_gtdbtk
+    wildcards: sample=F1
+    affected files:
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/F1_gtdbtk_temporary_directory.msh

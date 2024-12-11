@@ -1,0 +1,70 @@
+/opt/site/sge/default/spool/node762/job_scripts/5283199: line 15: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8): No such file or directory
+/opt/site/sge/default/spool/node762/job_scripts/5283199: line 15: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+/opt/site/sge/default/spool/node762/job_scripts/5283199: line 18: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+/opt/site/sge/default/spool/node762/job_scripts/5283199: line 18: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+cmdModule.c(613):ERROR:102: Tcl command execution failed: if { [file exists /opt/alces/etc/modules-alces.tcl] } {
+  if { [info exists ::env(MODULES_ALCES_TCL)] == 0 } {
+    set ::env(MODULES_ALCES_TCL) /opt/alces/etc/modules-alces.tcl
+  }
+  if { [file exists $::env(MODULES_ALCES_TCL)] } {
+    if { [namespace exists alces] == 0 } { source $::env(MODULES_ALCES_TCL) }
+    if { [file exists /opt/alces/etc/moduleinit ] } {
+      alces once { source /opt/alces/etc/moduleinit }
+    }
+  } else {
+    unset ::env(MODULES_ALCES_TCL)
+  }
+} else {
+  if { [info exists ::env(cw_ROOT)] == 0 } {
+    set ::env(cw_ROOT) "/opt/clusterware"
+  }
+  if { [info exists ::env(MODULES_ALCES_TCL)] == 0 } {
+    set ::env(MODULES_ALCES_TCL) $::env(cw_ROOT)/etc/modules-alces.tcl
+  }
+  if { [file exists $::env(MODULES_ALCES_TCL)] } {
+    if { [namespace exists alces] == 0 } { source $::env(MODULES_ALCES_TCL) }
+    if { [file exists $::env(cw_ROOT)/etc/moduleinit ] } {
+      alces once { source $::env(cw_ROOT)/etc/moduleinit }
+    }
+  } else {
+    unset ::env(MODULES_ALCES_TCL)
+  }
+}
+
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+cmdModule.c(613):ERROR:102: Tcl command execution failed: if { [file exists /opt/alces/etc/modules-alces.tcl] } {
+  if { [info exists ::env(MODULES_ALCES_TCL)] == 0 } {
+    set ::env(MODULES_ALCES_TCL) /opt/alces/etc/modules-alces.tcl
+  }
+  if { [file exists $::env(MODULES_ALCES_TCL)] } {
+    if { [namespace exists alces] == 0 } { source $::env(MODULES_ALCES_TCL) }
+    if { [file exists /opt/alces/etc/moduleinit ] } {
+      alces once { source /opt/alces/etc/moduleinit }
+    }
+  } else {
+    unset ::env(MODULES_ALCES_TCL)
+  }
+} else {
+  if { [info exists ::env(cw_ROOT)] == 0 } {
+    set ::env(cw_ROOT) "/opt/clusterware"
+  }
+  if { [info exists ::env(MODULES_ALCES_TCL)] == 0 } {
+    set ::env(MODULES_ALCES_TCL) $::env(cw_ROOT)/etc/modules-alces.tcl
+  }
+  if { [file exists $::env(MODULES_ALCES_TCL)] } {
+    if { [namespace exists alces] == 0 } { source $::env(MODULES_ALCES_TCL) }
+    if { [file exists $::env(cw_ROOT)/etc/moduleinit ] } {
+      alces once { source $::env(cw_ROOT)/etc/moduleinit }
+    }
+  } else {
+    unset ::env(MODULES_ALCES_TCL)
+  }
+}
+
+Config file config.yaml is extended by additional config specified via the command line.
+SyntaxError in file /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/assemble.smk, line 57:
+Expecting rule keyword, comment or docstrings inside a rule definition. (assemble.smk, line 57)
+  File "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/Snakefile", line 12, in <module>

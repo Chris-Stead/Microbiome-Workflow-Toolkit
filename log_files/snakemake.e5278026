@@ -1,0 +1,75 @@
+/opt/site/sge/default/spool/node931/job_scripts/5278026: line 14: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8): No such file or directory
+/opt/site/sge/default/spool/node931/job_scripts/5278026: line 14: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+cmdModule.c(613):ERROR:102: Tcl command execution failed: if { [file exists /opt/alces/etc/modules-alces.tcl] } {
+  if { [info exists ::env(MODULES_ALCES_TCL)] == 0 } {
+    set ::env(MODULES_ALCES_TCL) /opt/alces/etc/modules-alces.tcl
+  }
+  if { [file exists $::env(MODULES_ALCES_TCL)] } {
+    if { [namespace exists alces] == 0 } { source $::env(MODULES_ALCES_TCL) }
+    if { [file exists /opt/alces/etc/moduleinit ] } {
+      alces once { source /opt/alces/etc/moduleinit }
+    }
+  } else {
+    unset ::env(MODULES_ALCES_TCL)
+  }
+} else {
+  if { [info exists ::env(cw_ROOT)] == 0 } {
+    set ::env(cw_ROOT) "/opt/clusterware"
+  }
+  if { [info exists ::env(MODULES_ALCES_TCL)] == 0 } {
+    set ::env(MODULES_ALCES_TCL) $::env(cw_ROOT)/etc/modules-alces.tcl
+  }
+  if { [file exists $::env(MODULES_ALCES_TCL)] } {
+    if { [namespace exists alces] == 0 } { source $::env(MODULES_ALCES_TCL) }
+    if { [file exists $::env(cw_ROOT)/etc/moduleinit ] } {
+      alces once { source $::env(cw_ROOT)/etc/moduleinit }
+    }
+  } else {
+    unset ::env(MODULES_ALCES_TCL)
+  }
+}
+
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+/bin/bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)
+cmdModule.c(613):ERROR:102: Tcl command execution failed: if { [file exists /opt/alces/etc/modules-alces.tcl] } {
+  if { [info exists ::env(MODULES_ALCES_TCL)] == 0 } {
+    set ::env(MODULES_ALCES_TCL) /opt/alces/etc/modules-alces.tcl
+  }
+  if { [file exists $::env(MODULES_ALCES_TCL)] } {
+    if { [namespace exists alces] == 0 } { source $::env(MODULES_ALCES_TCL) }
+    if { [file exists /opt/alces/etc/moduleinit ] } {
+      alces once { source /opt/alces/etc/moduleinit }
+    }
+  } else {
+    unset ::env(MODULES_ALCES_TCL)
+  }
+} else {
+  if { [info exists ::env(cw_ROOT)] == 0 } {
+    set ::env(cw_ROOT) "/opt/clusterware"
+  }
+  if { [info exists ::env(MODULES_ALCES_TCL)] == 0 } {
+    set ::env(MODULES_ALCES_TCL) $::env(cw_ROOT)/etc/modules-alces.tcl
+  }
+  if { [file exists $::env(MODULES_ALCES_TCL)] } {
+    if { [namespace exists alces] == 0 } { source $::env(MODULES_ALCES_TCL) }
+    if { [file exists $::env(cw_ROOT)/etc/moduleinit ] } {
+      alces once { source $::env(cw_ROOT)/etc/moduleinit }
+    }
+  } else {
+    unset ::env(MODULES_ALCES_TCL)
+  }
+}
+
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+MissingInputException in rule trimmomatic in file /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/assemble.smk, line 5:
+Missing input files for rule trimmomatic:
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR2239652_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR2239652_forward_unpaired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR2239652_reverse_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR2239652_reverse_unpaired.fq
+    wildcards: sample=SRR2239652
+    affected files:
+        /mnt/seaes01-data01/nixon-microbiome/shared/CS/geothermal1/SRR2239652_1.fastq.gz
+        /mnt/seaes01-data01/nixon-microbiome/shared/CS/geothermal1/SRR2239652_2.fastq.gz

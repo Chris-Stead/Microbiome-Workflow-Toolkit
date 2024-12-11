@@ -1,22 +1,21 @@
 # config.yaml
 
-# Select paths to data and output directories
-data_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/symlink_staging" # Directory with input raw FASTQ data, NOTE - dont end the filepath with a "/"
-
 # Select analyses
 # Type true or false for the analysis you want. IMPORTANT - "assemble" needs to be run first for all other sub analyses to work
 sub_analyses:
-  assemble: true
-  mags: false #needs testing
+  assemble: false
+  assemble_megahit: true
+  mags: false
   kaiju: true
   tpm: false
-  viruses: false #not yet functional 
+  viruses: false
   bgc: false
-
+  diversity: false
+  metabolic: false
 #Select threads used
 max_threads: 20  # Max threads per rule
 
-#Select samples used (THESE NEED TO BE ZIPPED FASTA FILES (.fasta.gz))
+#Select samples used. This will be the name of your symlink file, the forward and reverse reads ending in  _1.fastq.gz and _2.fastq.gz respectively
 samples:
   - F1
   - F2
@@ -32,5 +31,7 @@ samples:
 # Add more sample names as needed
 
 #Do not change
+# Select paths to data and output directories
+data_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/symlink_staging" # NOTE - dont end the filepath with a "/"
 output_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository" 
 containers_dir: "/mnt/seaes01-data01/nixon-microbiome/containers"

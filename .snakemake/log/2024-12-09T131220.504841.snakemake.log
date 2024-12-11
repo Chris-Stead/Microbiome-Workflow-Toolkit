@@ -1,0 +1,58 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 15
+Rules claiming more threads will be scaled down.
+Job stats:
+job                   count    min threads    max threads
+------------------  -------  -------------  -------------
+all                       1              1              1
+bin_refinement            9             15             15
+coverm                   10             15             15
+cut                       8             15             15
+fastqc                    4             15             15
+filter_seq_contigs       10             15             15
+gtdbtk                   10             15             15
+kaiju_refseq              4             15             15
+kaiju_table_Class         6             15             15
+kaiju_table_Genus         4             15             15
+megahit                   7             15             15
+metaquast                10             15             15
+metawrap_bin              7             15             15
+prokka                   10             15             15
+symlink_reads             3              1              1
+trimmomatic               3             15             15
+total                   106              1             15
+
+Select jobs to execute...
+
+[Mon Dec  9 13:12:26 2024]
+rule megahit:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O4_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O4_reverse_paired.fq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O4_assembly/contigs.fasta
+    jobid: 30
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O4_assembly/contigs.fasta
+    wildcards: sample=O4
+    threads: 15
+    resources: tmpdir=/tmp/5343411.1.parallel.q
+
+Activating singularity image /opt/containers/megahit/megahit-1.2.9.sif
+[Mon Dec  9 13:12:26 2024]
+Error in rule megahit:
+    jobid: 30
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O4_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O4_reverse_paired.fq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O4_assembly/contigs.fasta
+    shell:
+        
+        megahit --continue --presets meta-large             -1 /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O4_forward_paired.fq -2 /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O4_reverse_paired.fq             -o O4_tmp_assembly             -t 15
+        mv O4_tmp_assembly/final.contigs.fa /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O4_assembly/contigs.fasta
+        rm -rf O4_tmp_assembly
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-12-09T131220.504841.snakemake.log

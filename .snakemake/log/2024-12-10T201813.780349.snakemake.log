@@ -1,0 +1,10 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+MissingInputException in rule prokka  in line 80 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/assemble_megahit.smk:
+Missing input files for rule prokka:
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/F1_prokka, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/F1_prokka/F1_annotated.gff, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/F1_prokka/F1_annotated.tsv, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/F1_prokka/F1_annotated.faa
+    wildcards: sample=F1
+    affected files:
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/F1_contigs_filtered.fa

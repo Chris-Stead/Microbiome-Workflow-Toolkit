@@ -1,0 +1,277 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 20
+Rules claiming more threads will be scaled down.
+Job stats:
+job                   count    min threads    max threads
+------------------  -------  -------------  -------------
+all                       1              1              1
+bin_refinement           10             15             15
+coverm                   10             15             15
+cut                      10             15             15
+fastqc                    4             15             15
+filter_seq_contigs       10             15             15
+gtdbtk                   10             15             15
+kaiju_refseq              5             15             15
+kaiju_table_Class         8             15             15
+kaiju_table_Genus         6             15             15
+megahit                  10             15             15
+metaquast                10             15             15
+metawrap_bin             10             15             15
+prokka                   10             15             15
+symlink_reads             3              1              1
+trimmomatic               3             15             15
+total                   120              1             15
+
+Select jobs to execute...
+
+[Sat Dec  7 14:42:37 2024]
+rule megahit:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_reverse_paired.fq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_assembly/contigs.fasta
+    jobid: 26
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_assembly/contigs.fasta
+    wildcards: sample=N3
+    threads: 15
+    resources: tmpdir=/tmp
+
+Activating singularity image /opt/containers/megahit/megahit-1.2.9.sif
+[Sat Dec  7 18:07:17 2024]
+Finished job 26.
+1 of 120 steps (1%) done
+Select jobs to execute...
+
+[Sat Dec  7 18:07:17 2024]
+rule metawrap_bin:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_assembly/contigs.fasta, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/temp/N3_sym_1.fastq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/temp/N3_sym_2.fastq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_mags_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_mags_bins/concoct_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_mags_bins/maxbin2_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_mags_bins/metabat2_bins
+    jobid: 81
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_mags_bins/maxbin2_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_mags_bins/metabat2_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_mags_bins/concoct_bins; Input files updated by another job: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_assembly/contigs.fasta
+    wildcards: sample=N3
+    threads: 15
+    resources: tmpdir=/tmp
+
+Activating singularity image /opt/containers/metawrap/metawrap-1.3.0.sif
+[Sat Dec  7 20:41:00 2024]
+Finished job 81.
+2 of 120 steps (2%) done
+Removing temporary output /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/temp/N3_sym_1.fastq.
+Removing temporary output /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/temp/N3_sym_2.fastq.
+Select jobs to execute...
+
+[Sat Dec  7 20:41:00 2024]
+rule cut:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_assembly/contigs.fasta
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_contigs_IDs_trimmed.fasta
+    jobid: 48
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_contigs_IDs_trimmed.fasta; Input files updated by another job: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_assembly/contigs.fasta
+    wildcards: sample=N3
+    threads: 15
+    resources: tmpdir=/tmp
+
+[Sat Dec  7 20:41:03 2024]
+Finished job 48.
+3 of 120 steps (2%) done
+Select jobs to execute...
+
+[Sat Dec  7 20:41:03 2024]
+rule kaiju_table_Genus:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O4_kaiju_refseq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O4_GENUS_kaiju.table
+    jobid: 160
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O4_GENUS_kaiju.table
+    wildcards: sample=O4
+    threads: 15
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/kaiju/kaiju-1.9.0.sif
+[Sat Dec  7 20:41:27 2024]
+Finished job 160.
+4 of 120 steps (3%) done
+Select jobs to execute...
+
+[Sat Dec  7 20:41:27 2024]
+rule kaiju_table_Class:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O4_kaiju_refseq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O4_CLASS_kaiju.table
+    jobid: 149
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O4_CLASS_kaiju.table
+    wildcards: sample=O4
+    threads: 15
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/kaiju/kaiju-1.9.0.sif
+[Sat Dec  7 20:41:41 2024]
+Finished job 149.
+5 of 120 steps (4%) done
+Select jobs to execute...
+
+[Sat Dec  7 20:41:41 2024]
+rule kaiju_table_Class:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_kaiju_refseq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_CLASS_kaiju.table
+    jobid: 141
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_CLASS_kaiju.table
+    wildcards: sample=N3
+    threads: 15
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/kaiju/kaiju-1.9.0.sif
+[Sat Dec  7 20:42:01 2024]
+Finished job 141.
+6 of 120 steps (5%) done
+Select jobs to execute...
+
+[Sat Dec  7 20:42:01 2024]
+rule megahit:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_reverse_paired.fq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_assembly/contigs.fasta
+    jobid: 27
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_assembly/contigs.fasta; Code has changed since last execution; Software environment definition has changed since last execution
+    wildcards: sample=O1
+    threads: 15
+    resources: tmpdir=/tmp
+
+Activating singularity image /opt/containers/megahit/megahit-1.2.9.sif
+[Sun Dec  8 03:25:23 2024]
+Finished job 27.
+7 of 120 steps (6%) done
+Select jobs to execute...
+
+[Sun Dec  8 03:25:23 2024]
+rule metawrap_bin:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_assembly/contigs.fasta, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/temp/O1_sym_1.fastq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/temp/O1_sym_2.fastq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_mags_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_mags_bins/concoct_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_mags_bins/maxbin2_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_mags_bins/metabat2_bins
+    jobid: 83
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_mags_bins/metabat2_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_mags_bins/concoct_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_mags_bins/maxbin2_bins; Input files updated by another job: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_assembly/contigs.fasta
+    wildcards: sample=O1
+    threads: 15
+    resources: tmpdir=/tmp
+
+Activating singularity image /opt/containers/metawrap/metawrap-1.3.0.sif
+[Sun Dec  8 10:54:38 2024]
+Finished job 83.
+8 of 120 steps (7%) done
+Removing temporary output /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/temp/O1_sym_2.fastq.
+Removing temporary output /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/temp/O1_sym_1.fastq.
+Select jobs to execute...
+
+[Sun Dec  8 10:54:38 2024]
+rule megahit:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_reverse_paired.fq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_assembly/contigs.fasta
+    jobid: 25
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_assembly/contigs.fasta
+    wildcards: sample=N2
+    threads: 15
+    resources: tmpdir=/tmp
+
+Activating singularity image /opt/containers/megahit/megahit-1.2.9.sif
+[Sun Dec  8 14:10:06 2024]
+Finished job 25.
+9 of 120 steps (8%) done
+Select jobs to execute...
+
+[Sun Dec  8 14:10:06 2024]
+rule metawrap_bin:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_assembly/contigs.fasta, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/temp/N2_sym_1.fastq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/temp/N2_sym_2.fastq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_mags_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_mags_bins/concoct_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_mags_bins/maxbin2_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_mags_bins/metabat2_bins
+    jobid: 79
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_mags_bins/concoct_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_mags_bins/maxbin2_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_mags_bins/metabat2_bins; Input files updated by another job: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_assembly/contigs.fasta
+    wildcards: sample=N2
+    threads: 15
+    resources: tmpdir=/tmp
+
+Activating singularity image /opt/containers/metawrap/metawrap-1.3.0.sif
+[Sun Dec  8 18:58:18 2024]
+Finished job 79.
+10 of 120 steps (8%) done
+Removing temporary output /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/temp/N2_sym_2.fastq.
+Removing temporary output /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/temp/N2_sym_1.fastq.
+Select jobs to execute...
+
+[Sun Dec  8 18:58:18 2024]
+rule cut:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_assembly/contigs.fasta
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_contigs_IDs_trimmed.fasta
+    jobid: 51
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_contigs_IDs_trimmed.fasta; Input files updated by another job: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_assembly/contigs.fasta
+    wildcards: sample=O1
+    threads: 15
+    resources: tmpdir=/tmp
+
+[Sun Dec  8 18:58:24 2024]
+Finished job 51.
+11 of 120 steps (9%) done
+Select jobs to execute...
+
+[Sun Dec  8 18:58:24 2024]
+rule kaiju_refseq:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_reverse_paired.fq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_kaiju_refseq
+    jobid: 140
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_kaiju_refseq
+    wildcards: sample=N2
+    threads: 15
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/kaiju/kaiju-1.9.0.sif
+[Sun Dec  8 20:05:05 2024]
+Finished job 140.
+12 of 120 steps (10%) done
+Select jobs to execute...
+
+[Sun Dec  8 20:05:05 2024]
+rule kaiju_table_Genus:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_kaiju_refseq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_GENUS_kaiju.table
+    jobid: 155
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_GENUS_kaiju.table; Input files updated by another job: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N2_kaiju_refseq
+    wildcards: sample=N2
+    threads: 15
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/kaiju/kaiju-1.9.0.sif
+[Sun Dec  8 20:05:30 2024]
+Finished job 155.
+13 of 120 steps (11%) done
+Select jobs to execute...
+
+[Sun Dec  8 20:05:30 2024]
+rule bin_refinement:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_mags_bins/concoct_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_mags_bins/maxbin2_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_mags_bins/metabat2_bins
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_refined_mag_directory, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_refined_mag_directory/metawrap_50_10_bins
+    jobid: 97
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_refined_mag_directory/metawrap_50_10_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_refined_mag_directory; Input files updated by another job: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_mags_bins/metabat2_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_mags_bins/concoct_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_mags_bins/maxbin2_bins
+    wildcards: sample=O1
+    threads: 15
+    resources: tmpdir=/tmp
+
+Activating singularity image /opt/containers/metawrap/metawrap-1.3.0.sif
+[Sun Dec  8 22:30:48 2024]
+Finished job 97.
+14 of 120 steps (12%) done
+Select jobs to execute...
+
+[Sun Dec  8 22:30:48 2024]
+rule gtdbtk:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_refined_mag_directory, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_refined_mag_directory/metawrap_50_10_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_gtdbtk_temporary_directory.msh
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_gtdbtk
+    jobid: 117
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_gtdbtk; Input files updated by another job: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_refined_mag_directory/metawrap_50_10_bins, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_refined_mag_directory
+    wildcards: sample=O1
+    threads: 15
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/gtdbtk/gtdbtk_2.4.0.sif
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule gtdbtk  in line 68 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/mags.smk:
+Job Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O1_gtdbtk completed successfully, but some output files are missing. 117
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-12-07T144236.326735.snakemake.log

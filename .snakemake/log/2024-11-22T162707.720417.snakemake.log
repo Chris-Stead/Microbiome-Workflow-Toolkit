@@ -1,0 +1,4 @@
+Config file config.yaml is extended by additional config specified via the command line.
+SyntaxError in file /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/assemble.smk, line 57:
+Expecting rule keyword, comment or docstrings inside a rule definition. (assemble.smk, line 57)
+  File "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/Snakefile", line 12, in <module>

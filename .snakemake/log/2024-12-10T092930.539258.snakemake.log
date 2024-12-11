@@ -1,0 +1,38 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 20
+Rules claiming more threads will be scaled down.
+Job stats:
+job                   count    min threads    max threads
+------------------  -------  -------------  -------------
+all                       1              1              1
+cut                       8             15             15
+fastqc                    4             15             15
+filter_seq_contigs        9             15             15
+kaiju_refseq              3             15             15
+kaiju_table_Class         4             15             15
+kaiju_table_Genus         3             15             15
+megahit                   6             15             15
+metaquast                10             15             15
+prokka                   10             15             15
+trimmomatic               3             15             15
+total                    61              1             15
+
+Select jobs to execute...
+
+[Tue Dec 10 09:29:31 2024]
+rule prokka:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_contigs_filtered_500.fa
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_prokka, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_prokka/N3_annotated.gff, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_prokka/N3_annotated.tsv, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_prokka/N3_annotated.faa
+    jobid: 46
+    reason: Updated input files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_contigs_filtered_500.fa
+    wildcards: sample=N3
+    threads: 15
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/prokka/prokka-1.14.6.sif
+Terminating processes on user request, this might take some time.
+Cancelling snakemake on user request.

@@ -1,0 +1,11 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+MissingInputException in rule trimmomatic in file /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/assemble.smk, line 5:
+Missing input files for rule trimmomatic:
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR2239652_forward_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR2239652_forward_unpaired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR2239652_reverse_paired.fq, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR2239652_reverse_unpaired.fq
+    wildcards: sample=SRR2239652
+    affected files:
+        /mnt/seaes01-data01/nixon-microbiome/shared/CS/geothermal1/SRR2239652_1.fastq.gz
+        /mnt/seaes01-data01/nixon-microbiome/shared/CS/geothermal1/SRR2239652_2.fastq.gz

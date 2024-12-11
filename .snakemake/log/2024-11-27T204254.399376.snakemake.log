@@ -1,0 +1,7 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+SyntaxError in line 48 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/tpm.smk:
+Unexpected keyword kofam in rule definition (tpm.smk, line 48)
+  File "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/Snakefile", line 18, in <module>

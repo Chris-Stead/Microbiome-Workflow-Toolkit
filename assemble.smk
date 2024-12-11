@@ -40,30 +40,44 @@ rule spades:
         o=directory(f"{config['output_dir']}/{{sample}}_assembly"),
         contig=f"{config['output_dir']}/{{sample}}_assembly/contigs.fasta"
     threads: config["max_threads"]
-    singularity: f"{config['containers_dir']}/spades/spades_4.0.0.sif"
+    singularity: f"{config['containers_dir']}/spades/spades-3.15.5.sif"
     shell:
         """
         metaspades.py -m 2000 -1 {input.forward} -2 {input.rev} -o {output.o} -t {threads}
         """
+        
+#cut contig names to avoid errors with prokka
+rule cut: 
+    input: 
+        contig=f"{config['output_dir']}/{{sample}}_assembly/contigs.fasta"
+    output: f"{config['output_dir']}/{{sample}}_contigs_IDs_trimmed.fasta"
+    threads: config["max_threads"] 
+    shell: "cut -d 'l' -f1 {input.contig} > {output}"
 
+#choose only contigs over ? bp
+rule filter_seq_contigs:
+    input: f"{config['output_dir']}/{{sample}}_contigs_IDs_trimmed.fasta"
+    output: f"{config['output_dir']}/{{sample}}_contigs_filtered.fa"
+    threads: config["max_threads"]
+    shell: 'python /mnt/seaes01-data01/nixon-microbiome/shared/scripts/pullseq_python3.py -i {input} -o {output} -m 1'
+        
 rule metaquast:
-    input:
-        contigs=f"{config['output_dir']}/{{sample}}_assembly/contigs.fasta"
+    input:f"{config['output_dir']}/{{sample}}_assembly/contigs.fasta"
     output:
         quast_report=directory(f"{config['output_dir']}/{{sample}}_quast_report")
     singularity: f"{config['containers_dir']}/quast/quast-5.2.0.sif"
     threads: config["max_threads"]
+    log: f"{config['output_dir']}/{{sample}}_quast.log"
     shell:
         """
-        metaquast.py --threads {threads} -o {output.quast_report} {input.contigs}
+        metaquast.py --threads {threads} --max-ref-number 0 -o {output.quast_report} {input}
         """
 
 rule prokka:
-    input:
-        contigs=f"{config['output_dir']}/{{sample}}_assembly/contigs.fasta"
+    input:f"{config['output_dir']}/{{sample}}_contigs_filtered.fa"
     output:
         prokka_folder=directory(f"{config['output_dir']}/{{sample}}_prokka"),
-	gff=f"{config['output_dir']}/{{sample}}_prokka/{{sample}}_annotated.gff",
+        gff=f"{config['output_dir']}/{{sample}}_prokka/{{sample}}_annotated.gff",
         tsv=f"{config['output_dir']}/{{sample}}_prokka/{{sample}}_annotated.tsv",
         faa=f"{config['output_dir']}/{{sample}}_prokka/{{sample}}_annotated.faa"
     singularity: f"{config['containers_dir']}/prokka/prokka-1.14.6.sif"
@@ -72,6 +86,5 @@ rule prokka:
         """
         prokka --outdir {output.prokka_folder} \
                --prefix {wildcards.sample}_annotated \
-               --force --centre X --compliant --cpus {threads} --metagenome {input.contigs}
+               --force --cpus {threads} --metagenome {input}
         """
-

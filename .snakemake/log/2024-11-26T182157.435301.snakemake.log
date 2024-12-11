@@ -1,0 +1,84 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 20
+Rules claiming more threads will be scaled down.
+Job stats:
+job                   count    min threads    max threads
+------------------  -------  -------------  -------------
+all                       1              1              1
+cut                      10             20             20
+fastqc                    5             20             20
+filter_seq_contigs       10             20             20
+kaiju_refseq              6             20             20
+kaiju_table_Class         9             20             20
+kaiju_table_Genus         9             20             20
+metaquast                10             20             20
+prokka                   10             20             20
+spades                    8             20             20
+trimmomatic               3             20             20
+total                    81              1             20
+
+Select jobs to execute...
+
+[Tue Nov 26 18:21:58 2024]
+rule cut:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_assembly/contigs.fasta
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_contigs_IDs_trimmed.fasta
+    jobid: 48
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_contigs_IDs_trimmed.fasta
+    wildcards: sample=N3
+    threads: 20
+    resources: tmpdir=/tmp
+
+[Tue Nov 26 18:22:03 2024]
+Finished job 48.
+1 of 81 steps (1%) done
+Select jobs to execute...
+
+[Tue Nov 26 18:22:03 2024]
+rule filter_seq_contigs:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_contigs_IDs_trimmed.fasta
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_contigs_filtered_500.fa
+    jobid: 47
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_contigs_filtered_500.fa; Input files updated by another job: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_contigs_IDs_trimmed.fasta
+    wildcards: sample=N3
+    threads: 20
+    resources: tmpdir=/tmp
+
+[Tue Nov 26 18:22:17 2024]
+Finished job 47.
+2 of 81 steps (2%) done
+Select jobs to execute...
+
+[Tue Nov 26 18:22:17 2024]
+rule kaiju_table_Genus:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O3_kaiju_refseq
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O3_GENUS_kaiju.table
+    jobid: 99
+    reason: Missing output files: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/O3_GENUS_kaiju.table
+    wildcards: sample=O3
+    threads: 20
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/kaiju/kaiju-1.9.0.sif
+[Tue Nov 26 18:22:38 2024]
+Finished job 99.
+3 of 81 steps (4%) done
+Select jobs to execute...
+
+[Tue Nov 26 18:22:38 2024]
+rule prokka:
+    input: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_contigs_filtered_500.fa
+    output: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_prokka, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_prokka/N3_annotated.gff, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_prokka/N3_annotated.tsv, /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/N3_prokka/N3_annotated.faa
+    jobid: 46
+    reason: Forced execution
+    wildcards: sample=N3
+    threads: 20
+    resources: tmpdir=/tmp
+
+Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/prokka/prokka-1.14.6.sif
+Terminating processes on user request, this might take some time.
+Cancelling snakemake on user request.

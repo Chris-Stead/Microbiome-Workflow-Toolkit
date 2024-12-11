@@ -1,0 +1,6 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+WorkflowError in line 35 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/assemble_megahit.smk:
+Duplicate output file pattern in rule megahit. First two duplicate for entries contig_MH and contig.
+  File "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/Snakefile_megahit", line 14, in <module>
+  File "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/assemble_megahit.smk", line 35, in <module>

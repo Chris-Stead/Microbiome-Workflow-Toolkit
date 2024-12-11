@@ -1,2 +1,3 @@
-output_repository
-symlink_staging
+output_repository/
+symlink_staging/
+apptainer_cache/*

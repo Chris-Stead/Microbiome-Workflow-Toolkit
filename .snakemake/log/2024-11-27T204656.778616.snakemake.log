@@ -1,0 +1,9 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+CreateRuleException in line 5 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/tpm.smk:
+The name cut is already used by another rule
+  File "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/Snakefile", line 18, in <module>
+  File "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/tpm.smk", line 5, in <module>

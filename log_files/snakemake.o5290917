@@ -1,0 +1,306 @@
+/usr/local/bin/metaquast.py --threads 10 -o /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_assembly/contigs.fasta
+
+Version: 5.2.0
+
+System information:
+  OS: Linux-3.10.0-1160.118.1.el7.x86_64-x86_64-with-glibc2.28 (linux_64)
+  Python version: 3.9.13
+  CPUs number: 32
+
+Started: 2024-11-25 15:29:28
+
+Logging to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/metaquast.log
+
+Contigs:
+  Pre-processing...
+  /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_assembly/contigs.fasta ==> contigs
+
+No references are provided, starting to search for reference genomes in SILVA 16S rRNA database and to download them from NCBI...
+
+2024-11-25 15:29:31
+Running BlastN..
+  processing contigs
+  BLAST results for contigs are saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/quast_downloaded_references/blast.res_contigs...
+
+
+2024-11-25 15:30:01
+Trying to download found references from NCBI. Totally 10 organisms to try.
+  unidentified_green_non-sulfur_bacterium_OPB11 | not found in the NCBI database
+  unidentified_green_non-sulfur_bacterium_OPB11 was not found in NCBI database, trying to download the next best match
+  bacterium_YC-ZSS-LKJ145                       | not found in the NCBI database
+  bacterium_YC-ZSS-LKJ145 was not found in NCBI database, trying to download the next best match
+Anaerolineales bacterium JdFR-64 has too fragmented reference genome! It will not be downloaded.
+  Anaerolineales_bacterium_JdFR-64              | not found in the NCBI database
+  Anaerolineales_bacterium_JdFR-64 was not found in NCBI database, trying to download the next best match
+  Thermanaerothrix_daxensis                     | successfully downloaded (total 1, 9 more to go)
+candidate division TA06 bacterium SM23 40 has too fragmented reference genome! It will not be downloaded.
+  candidate_division_TA06_bacterium_SM23_40     | not found in the NCBI database
+  candidate_division_TA06_bacterium_SM23_40 was not found in NCBI database, trying to download the next best match
+  Caldicellulosiruptor_kronotskyensis_2002      | successfully downloaded (total 2, 8 more to go)
+  Thermostilla_marina                           | not found in the NCBI database
+  Thermostilla_marina was not found in NCBI database, trying to download the next best match
+  marine_metagenome                             | successfully downloaded (total 3, 7 more to go)
+Thermodesulfovibrio sp. N1 has too fragmented reference genome! It will not be downloaded.
+  Thermodesulfovibrio_sp._N1                    | not found in the NCBI database
+  Thermodesulfovibrio_sp._N1 was not found in NCBI database, trying to download the next best match
+  Thermodesulfovibrio_hydrogeniphilus           | not found in the NCBI database
+  Thermodesulfovibrio_hydrogeniphilus was not found in NCBI database, trying to download the next best match
+  Thermodesulfovibrio_yellowstonii_DSM_11347    | successfully downloaded (total 4, 6 more to go)
+  Streptococcus_pneumoniae                      | successfully downloaded (total 5, 5 more to go)
+  Roseiflexus_castenholzii_DSM_13941            | successfully downloaded (total 6, 4 more to go)
+  Nitrospirae_bacterium_GWF2_44_13              | successfully downloaded (total 7, 3 more to go)
+  Gracilibacillus_saliphilus                    | successfully downloaded (total 8, 2 more to go)
+  Candidatus_Caldiarchaeum_subterraneum         | not found in the NCBI database
+  Candidatus_Caldiarchaeum_subterraneum was not found in NCBI database, trying to download the next best match
+  Thaumarchaeota_archaeon_JGI_OTU-3             | successfully downloaded (total 9, 1 more to go)
+  Acetothermia_clone_OPB14                      | not found in the NCBI database
+  Acetothermia_clone_OPB14 was not found in NCBI database, trying to download the next best match
+  Acetothermia_bacterium_64_32                  | successfully downloaded (total 10, 0 more to go)
+
+Downloaded reference(s):
+  /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/quast_downloaded_references/Acetothermia_bacterium_64_32.fasta ==> Acetothermia_bacterium_64_32
+  /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/quast_downloaded_references/Caldicellulosiruptor_kronotskyensis_2002.fasta ==> Caldicellulosiruptor_kronotskyensis_2002
+  /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/quast_downloaded_references/Gracilibacillus_saliphilus.fasta ==> Gracilibacillus_saliphilus
+  /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/quast_downloaded_references/Nitrospirae_bacterium_GWF2_44_13.fasta ==> Nitrospirae_bacterium_GWF2_44_13
+  /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/quast_downloaded_references/Roseiflexus_castenholzii_DSM_13941.fasta ==> Roseiflexus_castenholzii_DSM_13941
+  /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/quast_downloaded_references/Streptococcus_pneumoniae.fasta ==> Streptococcus_pneumoniae
+  /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/quast_downloaded_references/Thaumarchaeota_archaeon_JGI_OTU-3.fasta ==> Thaumarchaeota_archaeon_JGI_OTU-3
+  /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/quast_downloaded_references/Thermanaerothrix_daxensis.fasta ==> Thermanaerothrix_daxensis
+  /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/quast_downloaded_references/Thermodesulfovibrio_yellowstonii_DSM_11347.fasta ==> Thermodesulfovibrio_yellowstonii_DSM_11347
+  /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/quast_downloaded_references/marine_metagenome.fasta ==> marine_metagenome
+  All references were combined in combined_reference.fasta
+
+Starting quast.py for the combined reference...
+/usr/local/bin/quast.py --threads 10 --min-identity 90.0 --combined-ref --colors #E31A1C --ls solid --ambiguity-usage all /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_assembly/contigs.fasta -R /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/quast_corrected_input/combined_reference.fasta -o /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference --labels contigs
+
+Started: 2024-11-25 15:32:35
+
+Logging to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/quast.log
+
+CWD: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit
+Main parameters: 
+  MODE: meta, threads: 10, min contig length: 500, min alignment length: 65, min alignment IDY: 90.0, \
+  ambiguity: all, min local misassembly length: 200, min extensive misassembly length: 1000
+
+Reference:
+  /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/quast_corrected_input/combined_reference.fasta ==> combined_reference
+
+Contigs:
+  Pre-processing...
+  /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_assembly/contigs.fasta ==> contigs
+
+2024-11-25 15:32:36
+Running Basic statistics processor...
+  Reference genome:
+    combined_reference.fasta, length = 28043525, num fragments = 209, GC % = 48.85
+WARNING:   Reference genome is fragmented. You may consider rerunning QUAST using --fragmented option. QUAST will try to detect misassemblies caused by the fragmentation and mark them fake (will be excluded from # misassemblies).
+  Contig files: 
+    contigs
+  Calculating N50 and L50...
+    contigs, N50 = 3133, L50 = 818, auN = 17209.1, Total length = 19336899, GC % = 57.48, # N's per 100 kbp =  0.00
+  Drawing Nx plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/basic_stats/Nx_plot.pdf
+  Drawing cumulative plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/basic_stats/cumulative_plot.pdf
+  Drawing GC content plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/basic_stats/GC_content_plot.pdf
+  Drawing contigs GC content plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/basic_stats/contigs_GC_content_plot.pdf
+  Drawing Coverage histogram (bin size: 1x)...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/basic_stats/coverage_histogram.pdf
+  Drawing contigs coverage histogram (bin size: 1x)...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/basic_stats/contigs_coverage_histogram.pdf
+Done.
+
+2024-11-25 15:32:41
+Running Contig analyzer...
+  contigs
+  Logging to files /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/contigs_reports/contigs_report_contigs.stdout and contigs_report_contigs.stderr...
+  Aligning contigs to the reference
+  Analysis is finished.
+  Information about interspecies translocations by references for contigs is saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/contigs_reports/interspecies_translocations_by_refs_contigs.info
+  Drawing Intergenomic misassemblies (found and supposed) metaQUAST summary plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/contigs_reports/intergenomic_misassemblies.pdf
+  Creating total report...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/contigs_reports/misassemblies_report.txt, misassemblies_report.tsv, and misassemblies_report.tex
+  Transposed version of total report...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/contigs_reports/transposed_report_misassemblies.txt, transposed_report_misassemblies.tsv, and transposed_report_misassemblies.tex
+  Creating total report...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/contigs_reports/unaligned_report.txt, unaligned_report.tsv, and unaligned_report.tex
+  Drawing misassemblies by types plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/contigs_reports/misassemblies_plot.pdf
+  Drawing misassemblies FRCurve plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/contigs_reports/misassemblies_frcurve_plot.pdf
+Done.
+
+2024-11-25 15:32:48
+Running NA-NGA calculation...
+  contigs, Largest alignment = 11290, NA50 = None, LA50 = None
+  Drawing cumulative plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/aligned_stats/cumulative_plot.pdf
+  Drawing NAx plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/aligned_stats/NAx_plot.pdf
+Done.
+
+2024-11-25 15:32:49
+Running Genome analyzer...
+  NOTICE: No file with genomic features were provided. Use the --features option if you want to specify it.
+
+  NOTICE: No file with operons were provided. Use the -O option if you want to specify it.
+  contigs
+  Analysis is finished.
+  Skipping drawing Genome fraction, % histogram... (less than 2 columns histogram makes no sense)
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2024-11-25 15:32:55
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 2: Creating PDF with all tables and plots...
+  2 of 2: Creating Icarus viewers...
+Done
+
+2024-11-25 15:32:57
+RESULTS:
+  Text versions of total report are saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/report.html
+  PDF version (tables and plots) is saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/report.pdf
+  Icarus (contig browser) is saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/combined_reference/icarus.html
+
+Excluding downloaded references with low genome fraction from further analysis..
+All downloaded references have low genome fraction. Nothing was excluded for now.
+
+Partitioning contigs into bins aligned to each reference..
+  processing contigs
+
+Run QUAST on different references in parallel..
+
+Starting quast.py for the contigs aligned to Acetothermia_bacterium_64_32... (logging to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/runs_per_reference/Acetothermia_bacterium_64_32/quast.log)
+
+No contigs were aligned to the reference Caldicellulosiruptor_kronotskyensis_2002, skipping..
+
+Starting quast.py for the contigs aligned to Nitrospirae_bacterium_GWF2_44_13... (logging to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/runs_per_reference/Nitrospirae_bacterium_GWF2_44_13/quast.log)
+
+No contigs were aligned to the reference Gracilibacillus_saliphilus, skipping..
+
+Starting quast.py for the contigs aligned to Roseiflexus_castenholzii_DSM_13941... (logging to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/runs_per_reference/Roseiflexus_castenholzii_DSM_13941/quast.log)
+
+No contigs were aligned to the reference Streptococcus_pneumoniae, skipping..
+
+No contigs were aligned to the reference Thaumarchaeota_archaeon_JGI_OTU-3, skipping..
+
+Starting quast.py for the contigs aligned to Thermanaerothrix_daxensis... (logging to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/runs_per_reference/Thermanaerothrix_daxensis/quast.log)
+
+Starting quast.py for the contigs aligned to Thermodesulfovibrio_yellowstonii_DSM_11347... (logging to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/runs_per_reference/Thermodesulfovibrio_yellowstonii_DSM_11347/quast.log)
+
+No contigs were aligned to the reference marine_metagenome, skipping..
+
+Starting quast.py for the contigs not aligned anywhere... (logging to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/not_aligned/quast.log)
+/usr/local/bin/quast.py --threads 10 --min-identity 90.0 --colors #E31A1C --ls solid --no-check-meta --contig-thresholds 1000,5000,10000,25000,50000 -t 10 /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/quast_corrected_input/contigs_not_aligned_anywhere.fasta -o /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/not_aligned --labels contigs
+
+Started: 2024-11-25 15:33:08
+
+Logging to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/not_aligned/quast.log
+
+CWD: /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit
+Main parameters: 
+  MODE: meta, threads: 10, min contig length: 500, min alignment length: 65, min alignment IDY: 90.0, \
+  ambiguity: one, min local misassembly length: 200, min extensive misassembly length: 1000
+
+Contigs:
+  Pre-processing...
+  /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/quast_corrected_input/contigs_not_aligned_anywhere.fasta ==> contigs
+
+2024-11-25 15:33:08
+Running Basic statistics processor...
+  Contig files: 
+    contigs
+  Calculating N50 and L50...
+    contigs, N50 = 1462, L50 = 1670, auN = 7669.9, Total length = 15137497, GC % = 56.47, # N's per 100 kbp =  0.00
+  Drawing Nx plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/not_aligned/basic_stats/Nx_plot.pdf
+  Drawing cumulative plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/not_aligned/basic_stats/cumulative_plot.pdf
+  Drawing GC content plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/not_aligned/basic_stats/GC_content_plot.pdf
+  Drawing contigs GC content plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/not_aligned/basic_stats/contigs_GC_content_plot.pdf
+  Drawing Coverage histogram (bin size: 1x)...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/not_aligned/basic_stats/coverage_histogram.pdf
+  Drawing contigs coverage histogram (bin size: 1x)...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/not_aligned/basic_stats/contigs_coverage_histogram.pdf
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2024-11-25 15:33:10
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 2: Creating PDF with all tables and plots...
+  2 of 2: Creating Icarus viewers...
+Done
+
+2024-11-25 15:33:11
+RESULTS:
+  Text versions of total report are saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/not_aligned/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/not_aligned/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/not_aligned/report.html
+  PDF version (tables and plots) is saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/not_aligned/report.pdf
+  Icarus (contig browser) is saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/not_aligned/icarus.html
+
+2024-11-25 15:33:11
+Summarizing results...
+  Drawing # contigs metaQUAST summary plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/PDF/num_contigs.pdf
+  Drawing Largest contig metaQUAST summary plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/PDF/Largest_contig.pdf
+  Drawing Total length metaQUAST summary plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/PDF/Total_length.pdf
+  Drawing Largest alignment metaQUAST summary plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/PDF/Largest_alignment.pdf
+  Drawing Total aligned length metaQUAST summary plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/PDF/Total_aligned_length.pdf
+  Drawing Total length (>= 1000 bp) metaQUAST summary plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/PDF/Total_length_(ge_1000_bp).pdf
+  Drawing Total length (>= 10000 bp) metaQUAST summary plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/PDF/Total_length_(ge_10000_bp).pdf
+  Drawing Total length (>= 50000 bp) metaQUAST summary plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/PDF/Total_length_(ge_50000_bp).pdf
+  Drawing # misassemblies metaQUAST summary plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/PDF/num_misassemblies.pdf
+  Drawing metaQUAST summary misassemblies plot for contigs...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/PDF/contigs_misassemblies.pdf
+  Drawing Misassembled contigs length metaQUAST summary plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/PDF/Misassembled_contigs_length.pdf
+  Drawing # mismatches per 100 kbp metaQUAST summary plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/PDF/num_mismatches_per_100_kbp.pdf
+  Drawing # indels per 100 kbp metaQUAST summary plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/PDF/num_indels_per_100_kbp.pdf
+  Drawing # N's per 100 kbp metaQUAST summary plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/PDF/num_Ns_per_100_kbp.pdf
+  Drawing Genome fraction (%) metaQUAST summary plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/PDF/Genome_fraction.pdf
+  Drawing Duplication ratio metaQUAST summary plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/PDF/Duplication_ratio.pdf
+  Drawing NGA50 metaQUAST summary plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/PDF/NGA50.pdf
+  Drawing LGA50 metaQUAST summary plot...
+    saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/PDF/LGA50.pdf
+
+  Text versions of reports and plots for each metric (for all references and assemblies) are saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/summary/
+  Icarus (contig browser) is saved to /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_test/SRR6429754_quast_report/icarus.html
+  Drawing interactive Krona plots...
+
+'NoneType' object is not iterable
+Traceback (most recent call last):
+  File "/usr/local/bin/metaquast.py", line 427, in <module>
+    return_code = main(sys.argv[1:])
+  File "/usr/local/bin/metaquast.py", line 417, in main
+    html_saver.create_meta_report(output_dirpath, json_texts)
+  File "/usr/local/lib/python3.9/site-packages/quast_libs/html_saver/html_saver.py", line 257, in create_meta_report
+    create_krona_charts(taxons_for_krona, meta_log, results_dirpath, json_texts)
+  File "/usr/local/lib/python3.9/site-packages/quast_libs/html_saver/html_saver.py", line 363, in create_krona_charts
+    for section in report:
+TypeError: 'NoneType' object is not iterable

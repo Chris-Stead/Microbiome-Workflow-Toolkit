@@ -2,7 +2,6 @@
 configfile: "config.yaml"
 
 # kaiju.smk
-
 rule kaiju_refseq:
     input:
         forward_paired=f"{config['output_dir']}/{{sample}}_forward_paired.fq",

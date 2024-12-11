@@ -1,0 +1,37 @@
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Config file config.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+MissingInputException in rule all  in line 27 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/Snakefile:
+Missing input files for rule all:
+    affected files:
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE27AAK_prokka/GDE27AAK_annotated.tsv
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE33AAK_assembly/contigs.fasta
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE29AAK_prokka/GDE29AAK_annotated.tsv
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE27AAK_prokka/GDE27AAK_annotated.faa
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE29AAK_assembly/contigs.fasta
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE35AAK_prokka/GDE35AAK_annotated.gff
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE31AAK_prokka/GDE31AAK_annotated.tsv
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE35AAK_fastqc
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE33AAK_prokka/GDE33AAK_annotated.gff
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE29AAK_prokka/GDE29AAK_annotated.gff
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE29AAK_fastqc
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE31AAK_prokka/GDE31AAK_annotated.gff
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE33AAK_fastqc
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE31AAK_quast_report
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE35AAK_quast_report
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE31AAK_prokka/GDE31AAK_annotated.faa
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE29AAK_quast_report
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE27AAK_fastqc
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE35AAK_prokka/GDE35AAK_annotated.tsv
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE31AAK_assembly/contigs.fasta
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE33AAK_prokka/GDE33AAK_annotated.faa
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE27AAK_quast_report
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE27AAK_assembly/contigs.fasta
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE29AAK_prokka/GDE29AAK_annotated.faa
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE33AAK_quast_report
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE31AAK_fastqc
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE35AAK_assembly/contigs.fasta
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE33AAK_prokka/GDE33AAK_annotated.tsv
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE35AAK_prokka/GDE35AAK_annotated.faa
+        /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_SN/GDE27AAK_prokka/GDE27AAK_annotated.gff

@@ -3,10 +3,10 @@ configfile: "config.yaml"
 
 rule genomad_end_to_end:
     input:
-        contigs=f"{config['output_dir']}/{{sample}}_assembly/contigs.fasta"
+        contigs=f"{config['output_dir']}/{{sample}}_contigs_filtered.fa"
     output:
         genomad_out_dir=directory(f"{config['output_dir']}/{{sample}}_genomad")
-    singularity: "/opt/containers/genomad/genomad_1.8.0.sif" 
+    singularity:f"{config['containers_dir']}/genomad/genomad-1.8.0_EC_build.sif"
     threads: config["max_threads"]
     shell:
         """

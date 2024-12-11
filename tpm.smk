@@ -2,7 +2,7 @@
 configfile: "config.yaml"
 
 # Step 2.1 - cut contig names  
-rule cut: 
+rule cut_IDs: 
     input: f"{config['output_dir']}/{{sample}}_assembly/contigs.fasta"
     output: f"{config['output_dir']}/{{sample}}_tpm/{{sample}}_contigs_IDs_cut.fasta"
     threads: workflow.cores 
@@ -16,7 +16,7 @@ rule filter_seq:
     output: f"{config['output_dir']}/{{sample}}_tpm/{{sample}}_scaffold_filtered.fa"
     threads: workflow.cores
     shell: 
-        'python /mnt/seaes01-data01/nixon-microbiome/shared/scripts/pullseq_python3.py -i {input} -o {output} -m 100'
+        'python /mnt/seaes01-data01/nixon-microbiome/shared/scripts/pullseq_python3.py -i {input} -o {output} -m 1'
 
 rule tpm_prokka:
     input:
@@ -43,14 +43,14 @@ rule get_gtf:
         'bash /mnt/seaes01-data01/nixon-microbiome/shared/scripts/prokkagff2gtf.sh {input} > {output}'
 
 rule kofam:
-    input: f"{config['output_dir']}/{{sample}}_tpm/{{sample}}_tpm_prokka/{{sample}}_filtered_prokka.faa"
+    input:
+        f"{config['output_dir']}/{{sample}}_tpm/{{sample}}_tpm_prokka/{{sample}}_filtered_prokka.faa"
     output:
-	kofam= f"{config['output_dir']}/{{sample}}_tpm/{{sample}}_kofam_oneline.txt"
-	kofam_tmpdir=directory(f"{config['output_dir']}/{{sample}}_tpm/{{sample}}_tmp")
+        kofam=f"{config['output_dir']}/{{sample}}_tpm/{{sample}}_kofam_oneline.txt"
     singularity: f"{config['containers_dir']}/kofamscan/kofamscan-1.3.0.sif"
     threads: workflow.cores
     shell: 
-        'exec_annotation -o {kofam.output} -p /mnt/seaes01-data01/nixon-microbiome/shared/databases/kofam/profiles -k /mnt/seaes01-data01/nixon-microbiome/shared/databases/kofam/ko_list --cpu {threads} -f mapper-one-line --tmp-dir {output.kofam_tmpdir} {input}'
+        'exec_annotation -o {output.kofam} -p /mnt/seaes01-data01/nixon-microbiome/shared/databases/kofam/profiles -k /mnt/seaes01-data01/nixon-microbiome/shared/databases/kofam/ko_list --cpu {threads} -f mapper-one-line --tmp-dir {wildcards.sample}_kofam_tmpdir {input}'
 
 # Step 5 - Mapping
 rule bowtie_build:
@@ -104,11 +104,11 @@ rule htseq:
         'htseq-count -r pos -t CDS -f bam {input.mk} {input.gtf} > {output}'
 
 rule read_length:
-    input: f"{config['data_dir']}/{{sample}}_1.fastq"
+    input: fwd=f"{config['output_dir']}/{{sample}}_forward_paired.fq"
     output: f"{config['output_dir']}/{{sample}}_tpm/{{sample}}.readlength"
     threads: workflow.cores
     shell: 
-        "awk 'NR%4==2{{sum+=length($0)}}END{{print sum/(NR/4)}}' {input} > {output}"
+        "awk 'NR%4==2{{sum+=length($0)}}END{{print sum/(NR/4)}}' {input.fwd} > {output}"
 
 rule gene_length:
     input: f"{config['output_dir']}/{{sample}}_tpm/{{sample}}_tpm_prokka/{{sample}}_filtered_prokka.gtf"

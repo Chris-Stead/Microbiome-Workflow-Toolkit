@@ -9,13 +9,18 @@ cd /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit
 #FOR USE ON THE SERVER 
 
 #create a snakemake environment (only needs to be created once, the environment persists when logging off)
-conda create -c conda-forge -c bioconda -n snakemake snakemake
+conda env create -n snakemake --file Snakemake.yaml
 
 #type "y" when prompted and press enter
 #activate the snakemake environment (this needs to be done every time you log in)
 conda activate snakemake
 
-#Modify the config.yaml (further instructions in the file on how to modify), choosing the directory of your data, your samples, and number of cores to use. 
+# leave your raw data in its origional folder, do not duplicate. 
+# stage your files in /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/symlink_staging using a symlink. 
+#see example scripts in the all_symlink_scripts folder
+ln -s <full filepath and filename>_1.fastq.gz /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/symlink_staging/<new file name>_1.fastq.gz
+ln -s <full filepath and filename>_2.fastq.gz /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/symlink_staging/<new file name>_2.fastq.gz
+#Modify the config.yaml, choose the directory of your data, your samples (symlinks), and number of cores to use. 
 nano config.yaml 
 
 #escape the file editor by pressing and holding "control" then pressing "x"
@@ -35,7 +40,12 @@ bash bash_script
 #FOR USE ON THE CSF
 
 #create a snakemake environment (only needs to be created once, the environment persists when logging off)
-conda create -c conda-forge -c bioconda -n snakemake snakemake
+module load apps/python/miniconda3/4.10.3
+conda env create -n snakemake --file Snakemake.yaml
+
+# leave your raw data in its original folder, do not duplicate. 
+# stage your files in /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/symlink_staging using a symlink. 
+#see example scripts in the all_symlink_scripts folder
 
 #Modify the config.yaml (further instructions in the file on how to modify), choosing the directory of your data, your samples, and number of cores to use. 
 nano config.yaml
@@ -52,8 +62,9 @@ qsub qsub_jobscript
 
 #Are you running the job from the correct directory? bioinformatics_toolkit/
 
-#Is someone else running the pipeline at the moment? Snakemake can't run twice, simultaneously, on the same folder
+#Is someone else running the pipeline at the moment? Snakemake can't run twice, simultaneously, on the same output folder
 
 #Has the job cancelled for whatever reason and snakemake has locked the folder? use 
 snakemake --unlock <path/to/directory>
 
+#The script only recognises input data with the format _1.fastq.gz and _2.fastq.gz
