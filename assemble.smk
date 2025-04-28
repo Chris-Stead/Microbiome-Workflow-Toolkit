@@ -59,7 +59,7 @@ rule filter_seq_contigs:
     input: f"{config['output_dir']}/{{sample}}_contigs_IDs_trimmed.fasta"
     output: f"{config['output_dir']}/{{sample}}_contigs_filtered.fa"
     threads: config["max_threads"]
-    shell: 'python /mnt/seaes01-data01/nixon-microbiome/shared/scripts/pullseq_python3.py -i {input} -o {output} -m 1'
+    shell: 'python /mnt/seaes01-data01/nixon-microbiome/shared/scripts/pullseq_python3.py -i {input} -o {output} -m 1000'
         
 rule metaquast:
     input:f"{config['output_dir']}/{{sample}}_assembly/contigs.fasta"
@@ -71,20 +71,4 @@ rule metaquast:
     shell:
         """
         metaquast.py --threads {threads} --max-ref-number 0 -o {output.quast_report} {input}
-        """
-
-rule prokka:
-    input:f"{config['output_dir']}/{{sample}}_contigs_filtered.fa"
-    output:
-        prokka_folder=directory(f"{config['output_dir']}/{{sample}}_prokka"),
-        gff=f"{config['output_dir']}/{{sample}}_prokka/{{sample}}_annotated.gff",
-        tsv=f"{config['output_dir']}/{{sample}}_prokka/{{sample}}_annotated.tsv",
-        faa=f"{config['output_dir']}/{{sample}}_prokka/{{sample}}_annotated.faa"
-    singularity: f"{config['containers_dir']}/prokka/prokka-1.14.6.sif"
-    threads: config["max_threads"]
-    shell:
-        """
-        prokka --outdir {output.prokka_folder} \
-               --prefix {wildcards.sample}_annotated \
-               --force --cpus {threads} --metagenome {input}
         """

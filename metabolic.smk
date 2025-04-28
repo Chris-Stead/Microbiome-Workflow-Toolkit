@@ -1,34 +1,62 @@
 # Load the configuration file
 configfile: "config.yaml"
 
-# Rule for creating fasta files from paired reads for METABOLIC analysis
-rule metabolic_fasta_reads:
+rule create_bin_symlinks_with_fasta:
     input:
-        forward_paired=f"{config['output_dir']}/{{sample}}_forward_paired.fq",
-        rev_paired=f"{config['output_dir']}/{{sample}}_reverse_paired.fq"
+        refined_mag_directory_bins = f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_70_10_bins"
     output:
-        fasta_reads_dir=directory(f"{config['output_dir']}/{{sample}}_metabolic_fasta_reads"),
-        forward_fasta=f"{config['output_dir']}/{{sample}}_metabolic_fasta_reads/{{sample}}_1.fasta",
-        rev_fasta=f"{config['output_dir']}/{{sample}}_metabolic_fasta_reads/{{sample}}_2.fasta"
+        symlink_dir = directory(f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_70_10_bins_symlinks")
     shell:
         """
-        mkdir -p {output.fasta_reads_dir}
-        awk '(NR-1) % 4 == 0 {{print ">" substr($0, 2)}} (NR-2) % 4 == 0 {{print $0}}' {input.forward_paired} > {output.forward_fasta}
-        awk '(NR-1) % 4 == 0 {{print ">" substr($0, 2)}} (NR-2) % 4 == 0 {{print $0}}' {input.rev_paired} > {output.rev_fasta}
+        mkdir -p {output.symlink_dir}
+        echo "Creating symlinks with .fasta extensions for sample {wildcards.sample}..."
+        for file in {input.refined_mag_directory_bins}/*.fa; do
+            if [[ -f "$file" ]]; then
+                ln -s "$(realpath "$file")" "{output.symlink_dir}/$(basename ${{file%.fa}}.fasta)"
+            fi
+        done
         """
 
-# Rule for running METABOLIC analysis
+rule create_read_symlinks_with_fastq:
+    input:
+        forward_paired = f"{config['output_dir']}/{{sample}}_forward_paired.fq",
+        reverse_paired = f"{config['output_dir']}/{{sample}}_reverse_paired.fq"
+    output:
+        forward_symlink = f"{config['output_dir']}/{{sample}}_metabolic_fastq_symlink_reads/{{sample}}_1.fastq",
+        reverse_symlink = f"{config['output_dir']}/{{sample}}_metabolic_fastq_symlink_reads/{{sample}}_2.fastq"
+    shell:
+        """
+        mkdir -p {config[output_dir]}/{{sample}}_metabolic_fastq_symlink_reads
+
+        echo "Creating forward symlink for sample {wildcards.sample}..."
+        ln -s "$(realpath {input.forward_paired})" {output.forward_symlink}
+
+        echo "Creating reverse symlink for sample {wildcards.sample}..."
+        ln -s "$(realpath {input.reverse_paired})" {output.reverse_symlink}
+        """
+
+rule metabolic_reads_list:
+    input:
+        forward_fastq = f"{config['output_dir']}/{{sample}}_metabolic_fastq_symlink_reads/{{sample}}_1.fastq",
+        rev_fastq = f"{config['output_dir']}/{{sample}}_metabolic_fastq_symlink_reads/{{sample}}_2.fastq"
+    output:
+        reads_list = f"{config['output_dir']}/{{sample}}_metabolic_list.txt"
+    shell:
+        """
+        echo -n "{input.forward_fastq},{input.rev_fastq}" > {output.reads_list}
+        """
+
 rule metabolic:
     input:
-        refined_mag_directory_bins=f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_50_10_bins",
-        fasta_reads_dir=f"{config['output_dir']}/{{sample}}_metabolic_fasta_reads"
+        reads_list = f"{config['output_dir']}/{{sample}}_metabolic_list.txt",
+        symlink_dir = f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_70_10_bins_symlinks",
     output:
-        metabolic_dir=directory(f"{config['output_dir']}/{{sample}}_metabolic")
+        metabolic_dir = directory(f"{config['output_dir']}/{{sample}}_metabolic")
     threads: config["max_threads"]
     singularity: "/mnt/seaes01-data01/nixon-microbiome/containers/metabolic-c/metabolic_4.0_EC_build.sif"
     shell:
         """
         cd /mnt/seaes01-data01/nixon-microbiome/shared/METABOLIC_running_folder/METABOLIC/
-        perl METABOLIC-C.pl -in-gn {input.refined_mag_directory_bins} -t {threads} -r {input.fasta_reads_dir} -o {output.metabolic_dir}
+        perl METABOLIC-C.pl -in-gn {input.symlink_dir} -t {threads} -rt metaG -r {input.reads_list} -o {output.metabolic_dir}
         cd /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit
         """

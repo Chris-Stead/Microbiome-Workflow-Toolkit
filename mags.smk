@@ -12,6 +12,7 @@ rule symlink_reads:
     output:
         forward_symlink=temp(f"{config['output_dir']}/temp/{{sample}}_sym_1.fastq"),
         rev_symlink=temp(f"{config['output_dir']}/temp/{{sample}}_sym_2.fastq")
+    threads: 1
     shell:
         """
        # mkdir -p {{config['output_dir']}}/temp
@@ -31,7 +32,7 @@ rule metawrap_bin:
         maxbin2_dir=directory(f"{config['output_dir']}/{{sample}}_mags_bins/maxbin2_bins"),
         metabat_dir=directory(f"{config['output_dir']}/{{sample}}_mags_bins/metabat2_bins")
     singularity:f"{config['containers_dir']}/metawrap/metawrap-1.3.0_EC_build.sif"
-    threads: config["max_threads"]
+    threads: 5
     shell:
         """
 	checkm data setRoot /mnt/seaes01-data01/nixon-microbiome/shared/databases1/checkm        
@@ -47,16 +48,16 @@ rule bin_refinement:
         metabat=f"{config['output_dir']}/{{sample}}_mags_bins/metabat2_bins"
     output: 
         refined_mag_directory=directory(f"{config['output_dir']}/{{sample}}_refined_mag_directory"),
-	refined_mag_directory_bins=directory(f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_50_10_bins")
+	refined_mag_directory_bins=directory(f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_70_10_bins")
 
     singularity:f"{config['containers_dir']}/metawrap/metawrap-1.3.0_EC_build.sif"
-    threads: config["max_threads"]
+    threads: 5
     shell:
         """
-        metawrap bin_refinement -o {output.refined_mag_directory} -t {threads} -A {input.concoct} -B {input.maxbin2} -C {input.metabat} -c 50 -x 10
+        metawrap bin_refinement -o {output.refined_mag_directory} -t {threads} -A {input.concoct} -B {input.maxbin2} -C {input.metabat} -c 70 -x 10
         """
     
-# Rule for GTDB-Tk classification
+# Rule for GTDB-Tk classification (CONFIGURED LONG FILE PATHS REMOVED AS THEY CAUSE ERRORS)
 rule gtdbtk_folder:
     output:
         gtdbtk_temp=directory(f"{config['output_dir']}/{{sample}}_gtdbtk_temporary_directory")
@@ -67,17 +68,23 @@ rule gtdbtk_folder:
 
 rule gtdbtk:
     input: 
-        refined_mag_directory=f"{config['output_dir']}/{{sample}}_refined_mag_directory",
-	refined_mag_directory_bins=f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_50_10_bins",
-	gtdbtk_temp=f"{config['output_dir']}/{{sample}}_gtdbtk_temporary_directory"
+        refined_mag_directory_bins=f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_70_10_bins",
+        gtdbtk_temp=f"{config['output_dir']}/{{sample}}_gtdbtk_temporary_directory"
     output:
-        taxonomy=directory(f"{config['output_dir']}/{{sample}}_gtdbtk")
+        taxonomy=directory(f"{config['output_dir']}/{{sample}}_gtdbtk"),
+	mash_db=f"{config['output_dir']}/{{sample}}_gtdbtk_mash_db"
     singularity: f"{config['containers_dir']}/gtdbtk/gtdbtk_2.4.0.sif"
-    threads: config["max_threads"]
+    threads: 5
     shell:
         """
-        export GTDBTK_DATA_PATH="/mnt/seaes01-data01/nixon-microbiome/databases/gtdbtk_data/release220"
-	gtdbtk classify_wf --genome_dir {input.refined_mag_directory_bins} --extension .fa --mash_db {input.gtdbtk_temp} --out_dir {output.taxonomy} --cpus {threads} --pplacer_cpus 1 
+        gtdbtk classify_wf \
+         --genome_dir {input.refined_mag_directory_bins} \
+         --extension .fa \
+         --tmpdir /mnt/seaes01-data01/nixon-microbiome/shared/tmp \
+         --out_dir {output.taxonomy} \
+         --cpus {threads} \
+	 --mash_db {output.mash_db}
+         --pplacer_cpus 1
         """
 
 # Rule for CoverM genome coverage
@@ -86,13 +93,42 @@ rule coverm:
         forward=f"{config['output_dir']}/{{sample}}_forward_paired.fq",
         rev=f"{config['output_dir']}/{{sample}}_reverse_paired.fq",
         refined_mag_directory=f"{config['output_dir']}/{{sample}}_refined_mag_directory",
-	refined_mag_directory_bins=f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_50_10_bins"
+	refined_mag_directory_bins=f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_70_10_bins"
     output:
         coverage=f"{config['output_dir']}/{{sample}}_coverm_coverage.tsv"
     singularity: f"{config['containers_dir']}/coverm/coverm.sif"
-    threads: config["max_threads"]
+    threads: 5
     shell:
         """
         coverm genome -1 {input.forward} -2 {input.rev} --genome-fasta-directory {input.refined_mag_directory_bins} \
         --genome-fasta-extension .fa --output-file {output.coverage} --threads {threads}
         """
+
+#provirus
+#rule find_provirus:
+#    input:
+#        bin=glob_wildcards(f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_70_10_bins/{{bin}}.fa").bin
+#    output:
+#        provirus_dir=directory(f"{config['output_dir']}/{{sample}}_refined_mag_directory/provirus_in_bins/{{sample}}_provirus/{{bin}}_provirus")
+#    threads: 5
+#    shell:
+#        """
+#        singularity exec /mnt/seaes01-data01/nixon-microbiome/containers/genomad/genomad-1.8.0_EC_build.sif \
+#        genomad find-provirus --cleanup {input.bin} {output.provirus_dir} /mnt/data/genomad_db_v1.7
+#        """
+
+#spacers
+#rule crispr_spacers:
+#    input:
+#        bin=glob_wildcards(f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_70_10_bins/{{bin}}.fa").bin
+#    output:
+#        crispr_gff=f"{config['output_dir']}/{{sample}}_refined_mag_directory/crispr_in_bins/{{bin}}_crispr/crispr_spacers.gff",
+#        crispr_txt=f"{config['output_dir']}/{{sample}}_refined_mag_directory/crispr_in_bins/{{bin}}_crispr/crispr_spacers.txt"
+#    singularity:
+#        f"{config['containers_dir']}/minced/minced_0.4.2--hdfd78af_1"
+#    threads: 5
+#    shell:
+#        """
+#        mkdir -p $(dirname {output.crispr_gff})
+#        minced -gff {input.bin} {output.crispr_txt} {output.crispr_gff}
+#        """

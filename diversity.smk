@@ -7,7 +7,7 @@ rule nonpareil_convert:
         fwd=f"{config['output_dir']}/{{sample}}_forward_paired.fq"
     output:
         fasta_convert=f"{config['output_dir']}/{{sample}}_diversity/{{sample}}_alignment.fasta"
-    threads: config["max_threads"]
+    threads: 5
     shell:
         """
         cat {input.fwd} | paste - - - - | \
@@ -20,7 +20,7 @@ rule nonpareil_kmer:
         fasta_convert=f"{config['output_dir']}/{{sample}}_diversity/{{sample}}_alignment.fasta"
     output:
         kmer_output=f"{config['output_dir']}/{{sample}}_diversity/{{sample}}_nonpareil_output"
-    threads: config["max_threads"]
+    threads: 5
     singularity: f"{config['containers_dir']}/nonpareil/nonpareil-3.4.1_EC_build.sif"
     shell:
         """
@@ -33,7 +33,7 @@ rule nonpareil_alignment:
         fasta_convert=f"{config['output_dir']}/{{sample}}_diversity/{{sample}}_alignment.fasta"
     output:
         alignment_output=f"{config['output_dir']}/{{sample}}_diversity/{{sample}}_alignment.npo"
-    threads: config["max_threads"]
+    threads: 5
     singularity: f"{config['containers_dir']}/nonpareil/nonpareil-3.4.1_EC_build.sif"
     shell:
         """

@@ -1,12 +1,16 @@
 # Make CSF filesystems available to the container
 export APPTAINER_HOME=$HOME
-export APPTAINER_BINDPATH=/mnt
-export APPTAINER=/mnt
+export APPTAINER_BINDPATH="/mnt,/mnt/seaes01-data01/nixon-microbiome/databases, /mnt/data/genomad_db_v1.7, /mnt/seaes01-data01/nixon-microbiome/shared/databases/kofam/ko_list"
+export APPTAINER="/mnt,/mnt/seaes01-data01/nixon-microbiome/databases, /mnt/data/genomad_db_v1.7, /mnt/seaes01-data01/nixon-microbiome/shared/databases/kofam/ko_list"
 export GTDBTK_DATA_PATH="/mnt/seaes01-data01/nixon-microbiome/databases/gtdbtk_data/release220"
 export MPLCONFIGDIR=/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/antimash_temp
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 export GENOMAD_DB=/mnt/data/genomad_db_v1.7
+export TMPDIR=/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/toolkit_tmpdir
+
+#activate conda 
+module add anaconda/2022.05
 
 #run snakemake
-snakemake  --cores 20 --rerun-incomplete --use-singularity --configfile config.yaml -s Snakefile
+snakemake  --cores 40 --keep-going --rerun-incomplete --use-conda --conda-frontend conda --use-singularity --configfile config_snaedis_mat.yaml -p -s Snakefile

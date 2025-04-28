@@ -80,3 +80,5 @@ rule prokka:
     resources: tmpdir=/tmp
 
 Activating singularity image /mnt/seaes01-data01/nixon-microbiome/containers/prokka/prokka-1.14.6.sif
+Terminating processes on user request, this might take some time.
+Cancelling snakemake on user request.

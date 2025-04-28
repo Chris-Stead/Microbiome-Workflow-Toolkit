@@ -1,6 +1,5 @@
 # Load the configuration file
 configfile: "config.yaml"
-
 # Assemble sub-workflow
 rule trimmomatic:
     input:
@@ -14,7 +13,7 @@ rule trimmomatic:
     log:
         trimmomatic_log=f"{config['output_dir']}/{{sample}}_trimmomatic.log"
     singularity: f"{config['containers_dir']}/trimmomatic/trimmomatic-0.39.sif"
-    threads: config["max_threads"]
+    threads: 5
     shell:
         "java -jar /trimmomatic/Trimmomatic-0.39/trimmomatic-0.39.jar PE -phred33 -threads {threads} {input.forward} {input.rev} {output.forward_paired} {output.forward_unpaired} {output.reverse_paired} {output.reverse_unpaired} ILLUMINACLIP:/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/trimmomatic_adapters/Nextera_Truseq_Adapters:2:30:10 LEADING:30 TRAILING:30 SLIDINGWINDOW:4:15 MINLEN:36"
 
@@ -25,7 +24,7 @@ rule fastqc:
     output:
         fastqc_dir=directory(f"{config['output_dir']}/{{sample}}_fastqc/")
     singularity: f"{config['containers_dir']}/fastqc/fastqc-0.11.9.sif"
-    threads: config["max_threads"]
+    threads: 5
     shell:
         """
         mkdir {output.fastqc_dir}
@@ -38,8 +37,8 @@ rule megahit:
         rev=f"{config['output_dir']}/{{sample}}_reverse_paired.fq"
     output:
         contigs=f"{config['output_dir']}/{{sample}}_assembly/contigs.fasta"
-    threads: config["max_threads"]
-    singularity: "/opt/containers/megahit/megahit-1.2.9.sif"
+    threads: 10
+    singularity: "/mnt/seaes01-data01/nixon-microbiome/containers/megahit/megahit-1.2.9.sif"
     shell:
         """
         megahit --continue --presets meta-large \
@@ -55,7 +54,7 @@ rule cut:
     input: 
         contig=f"{config['output_dir']}/{{sample}}_assembly/contigs.fasta"
     output: f"{config['output_dir']}/{{sample}}_contigs_IDs_trimmed.fasta"
-    threads: config["max_threads"] 
+    threads: 1 
     shell: "cut -d ' ' -f1 {input.contig} > {output}"
 
 #choose only contigs over ? bp
@@ -70,25 +69,9 @@ rule metaquast:
     output:
         quast_report=directory(f"{config['output_dir']}/{{sample}}_quast_report")
     singularity: f"{config['containers_dir']}/quast/quast-5.2.0.sif"
-    threads: config["max_threads"]
+    threads: 1
     log: f"{config['output_dir']}/{{sample}}_quast.log"
     shell:
         """
         metaquast.py --threads {threads} --max-ref-number 0 -o {output.quast_report} {input}
-        """
-
-rule prokka:
-    input:f"{config['output_dir']}/{{sample}}_contigs_filtered.fa"
-    output:
-        prokka_folder=directory(f"{config['output_dir']}/{{sample}}_prokka"),
-        gff=f"{config['output_dir']}/{{sample}}_prokka/{{sample}}_annotated.gff",
-        tsv=f"{config['output_dir']}/{{sample}}_prokka/{{sample}}_annotated.tsv",
-        faa=f"{config['output_dir']}/{{sample}}_prokka/{{sample}}_annotated.faa"
-    singularity: f"{config['containers_dir']}/prokka/prokka-1.14.6.sif"
-    threads: config["max_threads"]
-    shell:
-        """
-        prokka --outdir {output.prokka_folder} \
-               --prefix {wildcards.sample}_annotated \
-               --force --cpus {threads} --metagenome {input}
         """
