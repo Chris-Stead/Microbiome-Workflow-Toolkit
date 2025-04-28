@@ -1,3 +1,8 @@
-output_repository*/
-symlink_staging/
-apptainer_cache/*
+output_repository*
+symlink_staging
+apptainer_cache*
+.java
+tmp_*
+*_tmp
+.parallel
+conda_envs
