@@ -26,3 +26,6 @@ output_repository*
 
 # Logs
 *.log
+
+# Tool caches
+.quast/
