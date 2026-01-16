@@ -1,7 +1,9 @@
 #
 output_repository*
-.java
-.parallel
+.java*
+.parallel*
+.cache*
+.font*
 .snakemake/
 .snakemake/locks/0.input.lock
 .snakemake/locks/0.output.lock
