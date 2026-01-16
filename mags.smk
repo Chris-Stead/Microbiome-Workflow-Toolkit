@@ -1,5 +1,4 @@
-# Load the configuration file
-configfile: "config.yaml"
+#Snakemake module for MAC/MAG assembly
 
 # Load necessary modules
 import glob
@@ -13,6 +12,7 @@ rule symlink_reads:
         forward_symlink=temp(f"{config['output_dir']}/temp/{{sample}}_sym_1.fastq"),
         rev_symlink=temp(f"{config['output_dir']}/temp/{{sample}}_sym_2.fastq")
     threads: 1
+    benchmark: f"{config['benchmark_dir']}/mags_symlink_reads_{{sample}}.tsv"
     shell:
         """
        # mkdir -p {{config['output_dir']}}/temp
@@ -33,6 +33,7 @@ rule metawrap_bin:
         metabat_dir=directory(f"{config['output_dir']}/{{sample}}_mags_bins/metabat2_bins")
     singularity:f"{config['containers_dir']}/metawrap/metawrap-1.3.0_EC_build.sif"
     threads: 5
+    benchmark: f"{config['benchmark_dir']}/mags_metawrap_bin_{{sample}}.tsv"
     shell:
         """
 	checkm data setRoot /mnt/seaes01-data01/nixon-microbiome/shared/databases1/checkm        
@@ -49,8 +50,8 @@ rule bin_refinement:
     output: 
         refined_mag_directory=directory(f"{config['output_dir']}/{{sample}}_refined_mag_directory"),
 	refined_mag_directory_bins=directory(f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_70_10_bins")
-
     singularity:f"{config['containers_dir']}/metawrap/metawrap-1.3.0_EC_build.sif"
+    benchmark: f"{config['benchmark_dir']}/mags_bin_refinment_{{sample}}.tsv"
     threads: 5
     shell:
         """
@@ -73,7 +74,7 @@ rule gtdbtk:
     output:
         taxonomy=directory(f"{config['output_dir']}/{{sample}}_gtdbtk"),
 	mash_db=f"{config['output_dir']}/{{sample}}_gtdbtk_mash_db"
-    singularity: f"{config['containers_dir']}/gtdbtk/gtdbtk_2.4.0.sif"
+    singularity: f"{config['containers_dir']}/gtdbtk/gtdbtk_2.4.1--pyhdfd78af_1"
     threads: 5
     shell:
         """
@@ -83,7 +84,7 @@ rule gtdbtk:
          --tmpdir /mnt/seaes01-data01/nixon-microbiome/shared/tmp \
          --out_dir {output.taxonomy} \
          --cpus {threads} \
-	 --mash_db {output.mash_db}
+	     --mash_db {output.mash_db}
          --pplacer_cpus 1
         """
 
@@ -98,6 +99,7 @@ rule coverm:
         coverage=f"{config['output_dir']}/{{sample}}_coverm_coverage.tsv"
     singularity: f"{config['containers_dir']}/coverm/coverm.sif"
     threads: 5
+    benchmark: f"{config['benchmark_dir']}/mags_coverm_{{sample}}.tsv"
     shell:
         """
         coverm genome -1 {input.forward} -2 {input.rev} --genome-fasta-directory {input.refined_mag_directory_bins} \

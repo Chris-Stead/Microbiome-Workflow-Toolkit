@@ -1,5 +1,4 @@
-# Load the configuration file
-configfile: "config.yaml"
+#Snakemake module for METABOLIC
 
 rule create_bin_symlinks_with_fasta:
     input:
@@ -54,6 +53,7 @@ rule metabolic:
         metabolic_dir = directory(f"{config['output_dir']}/{{sample}}_metabolic")
     threads: config["max_threads"]
     singularity: "/mnt/seaes01-data01/nixon-microbiome/containers/metabolic-c/metabolic_4.0_EC_build.sif"
+    benchmark: f"{config['benchmark_dir']}/metabolic_metabolic_{{sample}}.tsv"
     shell:
         """
         cd /mnt/seaes01-data01/nixon-microbiome/shared/METABOLIC_running_folder/METABOLIC/

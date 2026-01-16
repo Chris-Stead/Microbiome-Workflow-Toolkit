@@ -110,7 +110,7 @@ rule htseq:
     threads: 10
     benchmark: f"{config['benchmark_dir']}/tpm_htseq_{{sample}}.tsv"
     shell: 
-        'htseq-count -r pos -t CDS -f bam {input.mk} {input.gtf} > {output}'
+        'htseq-count -r pos -t --stranded no CDS -f bam {input.mk} {input.gtf} > {output}'
 
 rule read_length:
     input: fwd=f"{config['output_dir']}/{{sample}}_forward_paired.fq"

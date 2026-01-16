@@ -1,5 +1,4 @@
-# Load the configuration file
-configfile: "config.yaml"
+#Snakemake module for genomad
 
 rule genomad_end_to_end:
     input:
@@ -8,6 +7,7 @@ rule genomad_end_to_end:
         genomad_out_dir=directory(f"{config['output_dir']}/{{sample}}_genomad")
     #singularity:f"{config['containers_dir']}/genomad/genomad_1.8.0.sif"
     threads: 5
+    benchmark: f"{config['benchmark_dir']}/virus_genomad_end_to_end_{{sample}}.tsv"
     shell:
         """
         singularity exec /mnt/seaes01-data01/nixon-microbiome/containers/genomad/genomad-1.8.0_EC_build.sif \

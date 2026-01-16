@@ -1,5 +1,4 @@
-# Load the configuration file
-configfile: "config.yaml"
+#Snakemake module for nonpareil
 
 # Step 1 - Convert fastQ to fastA
 rule nonpareil_convert:
@@ -8,6 +7,7 @@ rule nonpareil_convert:
     output:
         fasta_convert=f"{config['output_dir']}/{{sample}}_diversity/{{sample}}_alignment.fasta"
     threads: 5
+    benchmark: f"{config['benchmark_dir']}/diversity_nonpareil_convert_{{sample}}.tsv"
     shell:
         """
         cat {input.fwd} | paste - - - - | \
@@ -22,6 +22,7 @@ rule nonpareil_kmer:
         kmer_output=f"{config['output_dir']}/{{sample}}_diversity/{{sample}}_nonpareil_output"
     threads: 5
     singularity: f"{config['containers_dir']}/nonpareil/nonpareil-3.4.1_EC_build.sif"
+    benchmark: f"{config['benchmark_dir']}/diversity_nonpareil_kmer_{{sample}}.tsv"
     shell:
         """
         nonpareil -s {input.fasta_convert} -t {threads} -T kmer -f fasta -b {output.kmer_output}
@@ -35,6 +36,7 @@ rule nonpareil_alignment:
         alignment_output=f"{config['output_dir']}/{{sample}}_diversity/{{sample}}_alignment.npo"
     threads: 5
     singularity: f"{config['containers_dir']}/nonpareil/nonpareil-3.4.1_EC_build.sif"
+    benchmark: f"{config['benchmark_dir']}/diversity_nonpareil_alignments_{{sample}}.tsv"
     shell:
         """
         nonpareil -s {input.fasta_convert} -t {threads} -T alignment -f fasta -b {output.alignment_output}
