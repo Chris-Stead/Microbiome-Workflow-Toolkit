@@ -1,3 +1,0 @@
-SyntaxError in line 23 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/metabolic.smk:
-Unexpected keyword refined_mag_directory_bins in rule definition (metabolic.smk, line 23)
-  File "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/Snakefile", line 28, in <module>

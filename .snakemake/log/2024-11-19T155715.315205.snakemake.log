@@ -1,8 +1,0 @@
-Config file config.yaml is extended by additional config specified via the command line.
-Config file config.yaml is extended by additional config specified via the command line.
-Config file config.yaml is extended by additional config specified via the command line.
-The flag 'directory' used in rule gtdbtk is only valid for outputs, not inputs.
-Config file config.yaml is extended by additional config specified via the command line.
-SyntaxError in line 25 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/tpm2.smk:
-Unexpected keyword prokka_folder in rule definition (tpm2.smk, line 25)
-  File "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/Snakefile", line 18, in <module>

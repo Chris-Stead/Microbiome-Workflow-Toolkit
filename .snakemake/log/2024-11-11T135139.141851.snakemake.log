@@ -1,5 +1,0 @@
-Config file config.yaml is extended by additional config specified via the command line.
-Config file config.yaml is extended by additional config specified via the command line.
-Building DAG of jobs...
-WorkflowError:
-The singularity command has to be available in order to use singularity integration.

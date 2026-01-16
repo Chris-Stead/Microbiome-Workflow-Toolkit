@@ -1,8 +1,28 @@
+#
 output_repository*
-symlink_staging
-apptainer_cache*
 .java
-tmp_*
-*_tmp
 .parallel
-conda_envs
+.snakemake/
+.snakemake/locks/0.input.lock
+.snakemake/locks/0.output.lock
+
+# Data
+*.fastq*
+*.fq*
+*.bam
+*.sam
+*.fasta
+*.fa
+*.fna
+
+# Results / intermediates
+output_repository*
+
+# Containers & envs
+*.sif
+.env
+.conda/
+.mamba/
+
+# Logs
+*.log

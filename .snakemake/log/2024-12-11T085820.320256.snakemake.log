@@ -1,3 +1,0 @@
-SyntaxError in line 9 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/bgc.smk:
-unterminated string literal (detected at line 15)
-  File "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/Snakefile", line 24, in <module>

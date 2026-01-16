@@ -1,5 +1,0 @@
-Config file config.yaml is extended by additional config specified via the command line.
-Config file config.yaml is extended by additional config specified via the command line.
-SyntaxError in line 62 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/mags.smk:
-invalid syntax. Perhaps you forgot a comma?
-  File "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/Snakefile", line 14, in <module>

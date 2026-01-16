@@ -1,4 +1,0 @@
-CreateRuleException in line 5 of /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/assemble_megahit.smk:
-The name trimmomatic is already used by another rule
-  File "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/Snakefile", line 14, in <module>
-  File "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/assemble_megahit.smk", line 5, in <module>

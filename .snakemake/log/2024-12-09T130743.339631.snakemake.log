@@ -1,9 +1,0 @@
-Config file config.yaml is extended by additional config specified via the command line.
-Config file config.yaml is extended by additional config specified via the command line.
-Config file config.yaml is extended by additional config specified via the command line.
-Config file config.yaml is extended by additional config specified via the command line.
-Building DAG of jobs...
-LockException:
-Error: Directory cannot be locked. Please make sure that no other Snakemake process is trying to create the same files in the following directory:
-/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit
-If you are sure that no other instances of snakemake are running on this directory, the remaining lock was likely caused by a kill signal or a power loss. It can be removed with the --unlock argument.
