@@ -99,7 +99,7 @@ rule picard:
     benchmark: f"{config['benchmark_dir']}/tpm_picard_{{sample}}.tsv"
     threads: 10
     shell: 
-        'java -Xms2g -Xmx32g -jar /picard/picard.jar MarkDuplicates INPUT={input} OUTPUT={output.markdup} METRICS_FILE={output.metrics} AS=TRUE VALIDATION_STRINGENCY=LENIENT MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=2500 REMOVE_DUPLICATES=TRUE'
+        'java -Xms2g -Xmx32g -jar /picard/picard.jar MarkDuplicates INPUT={input} OUTPUT={output.markdup} METRICS_FILE={output.metrics} AS=TRUE VALIDATION_STRINGENCY=LENIENT MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=2500 TMP_DIR=/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/toolkit_tmpdir REMOVE_DUPLICATES=TRUE'
 
 rule htseq:
     input: 
@@ -110,7 +110,7 @@ rule htseq:
     threads: 10
     benchmark: f"{config['benchmark_dir']}/tpm_htseq_{{sample}}.tsv"
     shell: 
-        'htseq-count -r pos -t --stranded no CDS -f bam {input.mk} {input.gtf} > {output}'
+        'htseq-count -r pos -f bam -s no -t CDS {input.mk} {input.gtf} > {output}'
 
 rule read_length:
     input: fwd=f"{config['output_dir']}/{{sample}}_forward_paired.fq"
