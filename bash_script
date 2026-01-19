@@ -8,6 +8,10 @@ export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 export GENOMAD_DB=/mnt/data/genomad_db_v1.7
 export TMPDIR=/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/toolkit_tmpdir
+export TMPDIR=/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/toolkit_tmpdir
+export TMP=/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/toolkit_tmpdir
+export TEMP=/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/toolkit_tmpdir
+
 
 #activate conda + snakemake OLD
 #module add anaconda/2022.05
