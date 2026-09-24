@@ -4,6 +4,9 @@ A collection of research bioinformatics workflows developed for high-throughput 
 
 The toolkit integrates sequencing quality control, metagenome assembly, genome reconstruction, taxonomic classification, functional annotation and gene abundance/expression profiling.
 
+## Workflow architecture
+
+![Snakemake workflow](docs/full_workflow_rulegraph.svg)
 
 ## Workflow Modules
 
@@ -45,11 +48,11 @@ Quantifies gene abundance through read mapping and functional annotation of meta
 
 **Metabolic Reconstruction (`metabolic.smk`)**
 
-Characterises the metabolic potential of reconstructed microbial genomes using METABOLIC-C. Integrates refined MAGs with metagenomic read data to investigate microbial metabolic pathways and their associated abundance, supporting the interpretation of biogeochemical processes within environmental microbiomes.
+Characterises the metabolic potential of reconstructed microbial genomes using METABOLIC-C. Integrates refined MAGs with metagenomic read data to investigate microbial metabolic pathways and their associated abundance.
 
-**S3 Ribosomal Protein Abundance (`s3_abundance3.smk`)**
+** Ribosomal gene Abundance (`s3_abundance3.smk`)**
 
-Uses the S3 ribosomal protein as a phylogenetic marker for taxonomic abundance profiling. Combines Prodigal, KofamScan, BLAST and GTDB taxonomy to identify and classify S3 sequences, followed by CoverM read mapping to quantify their abundance within metagenomic samples.
+Uses the S3 ribosomal protein, rpsC, as a phylogenetic marker for taxonomic abundance profiling. Combines Prodigal, KofamScan, BLAST and GTDB taxonomy to identify and classify S3 sequences, followed by CoverM read mapping to quantify their abundance within metagenomic samples.
 
 ### 4. Specialised Analyses
 
@@ -68,10 +71,6 @@ Identifies and characterises biosynthetic gene clusters within metagenomic assem
 **Metagenomic Diversity (`diversity.smk`)**
 
 Estimates metagenomic sequencing coverage and sequence diversity using Nonpareil. Integrates k-mer-based and alignment-based analyses to evaluate sequencing redundancy and estimate the extent to which microbial community diversity has been sampled.
-
-## Workflow architecture
-
-![Snakemake workflow](docs/full_workflow_rulegraph.svg)
 
 ## General usage
 
