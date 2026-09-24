@@ -19,10 +19,6 @@ Processes paired-end metagenomic reads using Trimmomatic for adapter removal and
 
 An alternative assembly workflow designed for large and complex metagenomic datasets. Integrates Trimmomatic, FastQC and MEGAHIT using the `meta-large` preset, followed by contig filtering and MetaQUAST assessment.
 
-**Quality-Control Reporting (`qc_report.smk`)**
-
-Aggregates FastQC and MetaQUAST outputs across samples using MultiQC. Produces consolidated quality-control reports to facilitate comparisons of sequencing quality and assembly statistics between samples.
-
 ### 2. Genome Reconstruction and Taxonomy
 
 **Prokaryotic MAG Reconstruction (`mags.smk`)**
@@ -43,17 +39,9 @@ Provides a standalone implementation of Kaiju for taxonomic profiling of previou
 
 ### 3. Functional Annotation and Abundance
 
-**Gene Abundance and Functional Annotation (`tpm.smk`)**
-
-Quantifies gene abundance through read mapping and functional annotation of metagenomic assemblies. Integrates MetaProkka, KofamScan, Bowtie2, SAMtools, Picard and HTSeq to generate gene counts and transcripts-per-million (TPM) values, with annotated gene-level and KEGG Orthology abundance tables.
-
 **Alternative Gene-Abundance Workflow (`tpm_1.smk`)**
 
-An alternative implementation of the TPM workflow, incorporating non-stranded gene counting with HTSeq and configurable temporary storage for Picard. Retains the core annotation, mapping and abundance calculations while accommodating different sequencing data and computational requirements.
-
-**High-Diversity Metagenomic Abundance (`tpm_high_diversity.smk`)**
-
-A variation of the gene-abundance workflow for complex metagenomic assemblies, incorporating an initial 1 kb contig-length filter. Performs gene prediction, functional annotation, read mapping and TPM quantification, generating annotated gene-abundance tables and KEGG Orthology summaries.
+Quantifies gene abundance through read mapping and functional annotation of metagenomic assemblies. Integrates MetaProkka, KofamScan, Bowtie2, SAMtools, Picard and HTSeq to generate gene counts and transcripts-per-million (TPM) values, with annotated gene-level and KEGG Orthology abundance tables. This incorporates non-stranded gene counting with HTSeq and configurable temporary storage for Picard. Retains the core annotation, mapping and abundance calculations while accommodating different sequencing data and computational requirements.
 
 **Metabolic Reconstruction (`metabolic.smk`)**
 
@@ -83,7 +71,7 @@ Estimates metagenomic sequencing coverage and sequence diversity using Nonpareil
 
 ## Workflow architecture
 
-![Snakemake workflow](full_workflow_rulegraph.svg)
+![Snakemake workflow](docs/full_workflow_rulegraph.svg)
 
 ## General usage
 
