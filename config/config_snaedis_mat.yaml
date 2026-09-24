@@ -5,16 +5,19 @@
 sub_analyses:
   assemble: false
   assemble_megahit: true
-  mags: false
-  kaiju: false
+  mags: true
+  mags_euk: false
+  kaiju: true
+  kaiju_only: false
   tpm: false
   tpm_1: true
   tpm_high_diversity: false
   viruses: false
-  bgc: false
-  diversity: false
-  metabolic: false
+  bgc: true
+  diversity: true
+  metabolic: true
   s3_abundance: true
+  mobilome: true
 #Select threads used
 max_threads: 15
 
@@ -22,10 +25,10 @@ max_threads: 15
 #forward and reverse reads ending in  _1.fastq.gz and _2.fastq.gz respectively
 samples:
   - GDE27AAK
-  - GDE29AAK
-  - GDE31AAK
-  - GDE33AAK
-  - GDE35AAK
+#  - GDE29AAK
+#  - GDE31AAK
+#  - GDE33AAK
+#  - GDE35AAK
 #  -
 #  -
 #  -
