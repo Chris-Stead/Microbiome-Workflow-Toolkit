@@ -1,0 +1,51 @@
+# config.yaml
+# Select analyses
+# Type true or false for the analysis you want. IMPORTANT - 
+# "assemble" needs to be run first for all other sub analyses to work
+sub_analyses:
+  assemble: false
+  assemble_megahit: false
+  mags: false
+  kaiju: false
+  tpm: false
+  tpm_high_diversity: false
+  viruses: false
+  bgc: false
+  diversity: true
+  metabolic: false
+  s3_abundance: false
+#Select threads used
+max_threads: 5
+
+#Select samples used. This will be the name of your symlink file, the 
+#forward and reverse reads ending in  _1.fastq.gz and _2.fastq.gz respectively
+samples:
+#  - SRR17348323
+#  - SRR17348322
+#  - SRR17348321
+#  - SRR609293
+#  - SRR609435
+#  - SRR1106873
+#  - SRR2107210
+#  - SRR2107212
+#  - SRR2107215
+#  - SRR2107218
+  - A26_V1_Cotton_Valley_dig_20201014
+  - A79_B4_Basildon_dig_20201014
+  - A127_P4_Pyewipe_dig_20201014
+  - A99_K4_Kings_Lynn_dig_20201014
+  - A63_C4_Cambridge_dig_20201014
+  - A198_CO4_Colchester_dig_20201014
+  - A24_Q20_Cliff_Quay_dig_20201021
+  - A1_W1_Whitlingham_dig_20201014
+  - A239_G8_Great_Billing_dig_20201028
+
+# Add more sample names as needed
+
+#Do not change
+# Select paths to data and output directories
+data_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_ayesha"
+output_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_ayesha"
+containers_dir: "/mnt/seaes01-data01/nixon-microbiome/containers"
+benchmark_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/benchmarks/ayesha"
+min_contig_length: 1000

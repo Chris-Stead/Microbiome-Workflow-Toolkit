@@ -1,0 +1,69 @@
+# config.yaml
+# Select analyses
+# Type true or false for the analysis you want. IMPORTANT - 
+# "assemble" needs to be run first for all other sub analyses to work
+sub_analyses:
+  assemble: false
+  assemble_megahit: true
+  mags: false
+  mags_euk: true
+  kaiju: true
+  kaiju_only: false
+  tpm: false
+  tpm_high_diversity: false
+  viruses: false
+  bgc: false
+  diversity: false
+  metabolic: false
+  s3_abundance: false
+  mobilome: false
+#Select threads used
+max_threads: 20 # Max threads per rule
+
+#Select samples used. This will be the name of your symlink file, the forward and reverse reads ending in  _1.fastq.gz and _2.fastq.gz respectively
+samples:
+ -  GAP4UP_DNA
+ -  GAP12014_DNA
+ -  GAP4MID2014_DNA
+ -  GAP4LOW2014_DNA
+ -  TalikLake_DNA
+ -  Drillpond_DNA
+## -  KR696m659A_DNA
+## -  KR696m659C_DNA
+ -  KR696m659_DNA
+## -  KR13330m658A_DNA
+## -  KR13330m658B_DNA
+ -  KR13330m658_DNA
+ -  KR6330m_DNA
+ -  KR1_DNA
+ -  Outo8180m_DNA
+ -  Outo5500m_DNA
+ -  Outo62260m_DNA
+ -  KR46_DNA
+ -  ERR2935805
+ -  ERR2984773
+
+# -  GAP4UP_RNA
+# -  TalikLake_RNA
+# -  Drillpond_RNA
+# -  GAP4MID2014_RNA
+# -  GAP4MID2014_RNAremover
+# -  GAP4LOW2014_RNA
+# -  GAP4LOW2014_RNAremover
+# -  KR696m659A_RNA
+# -  KR13330m658A_RNA
+# -  KR6330m_RNA
+# -  KR46_RNA
+# -  KR1_RNA
+# -  Outo8180m_RNA
+# -  Outo5500m_RNA
+# Add more sample names as needed
+
+#Do not change
+# Select paths to data and output directories
+data_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/symlink_staging" # NOTE - dont end the filepath with a "/"
+output_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_boreholes" 
+containers_dir: "/mnt/seaes01-data01/nixon-microbiome/containers"
+benchmark_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/benchmarks/boreholes"
+min_contig_len: 1000
+

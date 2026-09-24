@@ -1,0 +1,61 @@
+# config.yaml
+
+# Select analyses
+# Type true or false for the analysis you want. IMPORTANT - "assemble" needs to be run first for all other sub analyses to work
+sub_analyses:
+  assemble: false
+  assemble_megahit: false
+  assemble_megahit_only: false
+  mags: false
+  kaiju: false
+  tpm: false
+  tpm_high_diversity: false
+  viruses: false
+  bgc: false
+  diversity: false
+  metabolic: false
+  s3_abundance: true
+  mobilome: false
+#Select threads used
+max_threads: 30  # Max threads per rule
+
+#Select samples used. This will be the name of your symlink file, the forward and reverse reads ending in  _1.fastq.gz and _2.fastq.gz respectively
+samples:
+ - CF1
+ - CF2
+ - CF3
+ - CN1
+ - CN2
+ - CN3
+ - CO1
+ - CO2
+ - CO3
+ - F1T0
+ - F2T0
+ - F3T0
+ - N1T0
+ - N2T0
+ - N3T0
+ - O1T0
+ - O2T0
+ - O3T0
+
+# Add more sample names as needed
+
+#Do not change
+# Select paths to data and output directories
+data_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/symlink_staging" # NOTE - dont end the filepath with a "/"
+output_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository"
+containers_dir: "/mnt/seaes01-data01/nixon-microbiome/containers"
+
+# Conda environments
+conda_envs:
+  bioconda: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/conda_envs/bioconda"
+#Do not change
+# Select paths to data and output directories
+data_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/symlink_staging" # NOTE - dont end the filepath with a "/"
+output_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository"
+containers_dir: "/mnt/seaes01-data01/nixon-microbiome/containers"
+benchmark_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/benchmarks/mixotrophy"
+config_file: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/config.yaml"
+min_contig_len: 1000

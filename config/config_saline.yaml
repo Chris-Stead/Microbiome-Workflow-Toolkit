@@ -4,42 +4,31 @@
 # Type true or false for the analysis you want. IMPORTANT - "assemble" needs to be run first for all other sub analyses to work
 sub_analyses:
   assemble: false
-  assemble_megahit: true
-  assemble_megahit_only: fasle  
-  mags: true
-  kaiju: false
-  tpm: true
+  assemble_megahit: false
+  mags: false
+  kaiju: true
+  tpm: false
   tpm_high_diversity: false
   viruses: false
   bgc: false
-  diversity: true
-  metabolic: true
-  s3_abundance: true
-  mobilome: false
+  diversity: false
+  metabolic: false
+  s3_abundance: false
 #Select threads used
-max_threads: 20  # Max threads per rule
+max_threads: 25  # Max threads per rule
 
 #Select samples used. This will be the name of your symlink file, the forward and reverse reads ending in  _1.fastq.gz and _2.fastq.gz respectively
 samples:
- - CF1
- - CF2
- - CF3
- - CN1
- - CN2
- - CN3
- - CO1
- - CO2
- - CO3
- - CO4
+ - 215S
+ - 327A
+ - 540
+ - 844
+ - D18
 
 # Add more sample names as needed
 
 #Do not change
 # Select paths to data and output directories
 data_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/symlink_staging" # NOTE - dont end the filepath with a "/"
-output_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository"
+output_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_saline"
 containers_dir: "/mnt/seaes01-data01/nixon-microbiome/containers"
-
-# Conda environments
-conda_envs:
-  bioconda: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/conda_envs/bioconda"

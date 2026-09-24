@@ -1,0 +1,34 @@
+# config.yaml
+# Select analyses
+# Type true or false for the analysis you want. IMPORTANT - 
+# "assemble" needs to be run first for all other sub analyses to work
+sub_analyses:
+  assemble: false
+  assemble_megahit: false
+  assemble_megahit_only: true
+  mags: false
+  kaiju: false
+  tpm: false
+  tpm_high_diversity: false
+  viruses: false
+  bgc: false
+  diversity: false
+  metabolic: false
+#Select threads used
+max_threads: 20
+
+#Select samples used. This will be the name of your symlink file, the 
+#forward and reverse reads ending in  _1.fastq.gz and _2.fastq.gz respectively
+samples:
+  - GFa24
+  - GFb24
+  - SilStr24
+  - SnStr24
+  - TBS24
+# Add more sample names as needed
+
+#Do not change
+# Select paths to data and output directories
+data_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/symlink_staging"
+output_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_iceland_big" 
+containers_dir: "/mnt/seaes01-data01/nixon-microbiome/containers"

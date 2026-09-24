@@ -1,0 +1,110 @@
+# config.yaml
+# Select analyses
+# Type true or false for the analysis you want. IMPORTANT - 
+# "assemble" needs to be run first for all other sub analyses to work
+sub_analyses:
+  assemble: false
+  assemble_megahit: true
+  mags: false
+  kaiju: false
+  kaiju_only: false
+  tpm: false
+  tpm_high_diversity: false
+  viruses: false
+  bgc: false
+  diversity: false
+  metabolic: false
+  s3_abundance: false
+  mobilome: true
+  qc_report: false
+#Select threads used
+max_threads: 20 # Max threads per rule
+
+#Select samples used. This will be the name of your symlink file, the forward and reverse reads ending in  _1.fastq.gz and _2.fastq.gz respectively
+samples:
+ -  BS10000000
+ -  DRR163685
+ -  DRR163686
+ -  DRR163687
+ -  DRR163688
+ -  DRR163689
+ -  DRR163690
+ -  DRR163691
+ -  DRR163692
+ -  DRR163693
+ -  HV21
+ -  HV22
+ -  KR22
+ -  SRR10063240
+ -  SRR10063241
+ -  SRR10063242
+ -  SRR10095342
+ -  SRR10484996
+ -  SRR12124855
+ -  SRR12124856
+ -  SRR12124857
+ -  SRR1297186
+ -  SRR13684272
+ -  SRR13684273
+ -  SRR13684274
+ -  SRR17771275
+ -  SRR17771278
+ -  SRR17771279
+ -  SRR17771280
+ -  SRR17771281
+ -  SRR17771283
+ -  SRR17771284
+ -  SRR17771285
+ -  SRR17771286
+ -  SRR17771291
+ -  SRR17771294
+ -  SRR17771295
+ -  SRR17771298
+ -  SRR17771300
+ -  SRR17771303
+ -  SRR17771305
+ -  SRR17771307
+ -  SRR17771310
+ -  SRR17771314
+ -  SRR17794511
+ -  SRR17794512
+ -  SRR17794513
+ -  SRR17794515
+ -  SRR17794516
+ -  SRR17794517
+ -  SRR17794518
+ -  SRR17794519
+ -  SRR17863203
+ -  SRR2239652
+ -  SRR3961733
+ -  SRR3961734
+ -  SRR3961739
+ -  SRR3961740
+ -  SRR3961743
+ -  SRR5214706
+ -  SRR5216251
+ -  SRR5451031
+ -  SRR5451032
+ -  SRR5451033
+ -  SRR6311222
+ -  SRR6311224
+ -  SRR6429754
+ -  SRR7545549
+ -  SRR7545550
+ -  SRR7905022
+ -  SRR7905023
+ -  SRR8368399
+ -  SRR8369092
+ -  SRR8369165
+ -  SRR9001935
+# Add more sample names as needed
+
+#Do not change
+# Select paths to data and output directories
+data_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/CS/geothermal1" # NOTE - dont end the filepath with a "/"
+output_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_hotsprings"
+containers_dir: "/mnt/seaes01-data01/nixon-microbiome/containers"
+benchmark_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/benchmarks/hotsprings"
+config_file: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/config_hotsprings.yaml"
+min_contig_len: 1000
+

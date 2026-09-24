@@ -13,7 +13,7 @@
 rule filter_seq:
     input: f"{config['output_dir']}/{{sample}}_assembly/contigs.fasta"
     output: f"{config['output_dir']}/{{sample}}_tpm/{{sample}}_scaffold_filtered.fa"
-    threads: workflow.cores
+    threads: 1
     shell: 
         'python /mnt/seaes01-data01/nixon-microbiome/shared/scripts/pullseq_python3.py -i {input} -o {output} -m 1'
 
@@ -99,7 +99,7 @@ rule picard:
     benchmark: f"{config['benchmark_dir']}/tpm_picard_{{sample}}.tsv"
     threads: 10
     shell: 
-        'java -Xms2g -Xmx32g -jar /picard/picard.jar MarkDuplicates INPUT={input} OUTPUT={output.markdup} METRICS_FILE={output.metrics} AS=TRUE VALIDATION_STRINGENCY=LENIENT MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=2500 TMP_DIR=/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/toolkit_tmpdir REMOVE_DUPLICATES=TRUE'
+        'java -Xms2g -Xmx32g -jar /picard/picard.jar MarkDuplicates INPUT={input} OUTPUT={output.markdup} METRICS_FILE={output.metrics} AS=TRUE VALIDATION_STRINGENCY=LENIENT MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=2500 TMP_DIR=/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/toolkit_tmpdir REMOVE_DUPLICATES=TRUE MAX_RECORDS_IN_RAM=5000000'
 
 rule htseq:
     input: 
@@ -145,7 +145,7 @@ rule merge_tpm_annotation:
         kofam=f"{config['output_dir']}/{{sample}}_tpm/{{sample}}_kofam_oneline.txt",
         prokka=f"{config['output_dir']}/{{sample}}_tpm/{{sample}}_tpm_prokka/{{sample}}_filtered_prokka.tsv"
     output: csv=f"{config['output_dir']}/{{sample}}_tpm/{{sample}}_tpm_annotated.txt"
-    threads: workflow.cores
+    threads: 1
     benchmark: f"{config['benchmark_dir']}/tpm_merge_tpm_annotation_{{sample}}.tsv"
     run:
         import pandas as pd 

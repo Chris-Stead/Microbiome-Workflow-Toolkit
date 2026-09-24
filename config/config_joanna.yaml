@@ -5,36 +5,40 @@
 sub_analyses:
   assemble: false
   assemble_megahit: true
-  mags: true
+  mags: false
   kaiju: false
   kaiju_only: false
-  tpm: true
+  tpm: false
   tpm_1: true
   tpm_high_diversity: false
   viruses: false
   bgc: false
   diversity: false
   metabolic: false
-  s3_abundance: true
+  s3_abundance: false
   mobilome: false
   qc_report: false
 #Select threads used
-max_threads: 5 # Max threads per rule
+max_threads: 20 # Max threads per rule
 
 #Select samples used. This will be the name of your symlink file, the forward and reverse reads ending in  _1.fastq.gz and _2.fastq.gz respectively
 samples:
- - 
- - 
- - 
- -   
+ - SRR10302631
+ - SRR1976948
+ - SRR1977304
+ - SRR4293332
+ - SRR14522141
+ - SRR15357914
+ - mamtor
+ - 2b_BOG_sed__merged
 # Add more sample names as needed
 
 #Do not change
 # Select paths to data and output directories
 data_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/symlink_staging" # NOTE - dont end the filepath with a "/"
-output_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_??????"
+output_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository_joanna_test"
 containers_dir: "/mnt/seaes01-data01/nixon-microbiome/containers"
-benchmark_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/benchmarks/??????"
-config_file: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/config_bioreactor_metagenome.yaml"
-min_contig_len: 1
+benchmark_dir: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/benchmarks/joanna_test"
+config_file: "/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/config_joanna.yaml"
+min_contig_len: 1000
 

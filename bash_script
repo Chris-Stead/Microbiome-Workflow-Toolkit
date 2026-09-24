@@ -1,7 +1,7 @@
 # Make CSF filesystems available to the container
 export APPTAINER_HOME=$HOME
 export APPTAINER_BINDPATH="/mnt,/mnt/seaes01-data01/nixon-microbiome/databases, /mnt/data/genomad_db_v1.7, /mnt/seaes01-data01/nixon-microbiome/shared/databases/kofam/ko_list"
-export APPTAINER="/mnt,/mnt/seaes01-data01/nixon-microbiome/databases, /mnt/data/genomad_db_v1.7, /mnt/seaes01-data01/nixon-microbiome/shared/databases/kofam/ko_list"
+export APPTAINER="/mnt,/mnt/seaes01-data01/nixon-microbiome/databases, /mnt/seaes01-data01/nixon-microbiome/shared/databases/kofam/ko_list"
 export GTDBTK_DATA_PATH="/mnt/seaes01-data01/nixon-microbiome/databases/gtdbtk_data/release220"
 export MPLCONFIGDIR=/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/output_repository/antimash_temp
 export LC_ALL=C.UTF-8
@@ -12,14 +12,10 @@ export TMPDIR=/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/
 export TMP=/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/toolkit_tmpdir
 export TEMP=/mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/toolkit_tmpdir
 
+#activate conda
+conda init
+conda activate snakemake
 
-#activate conda + snakemake OLD
-#module add anaconda/2022.05
-#conda activate snakemake9.14.0
-
-#source ~/miniconda3/bin/activate snakemake9.14.0_miniconda
-conda activate /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit/conda_envs/snakemake9.14.0_miniconda
 
 #run snakemake
-#snakemake  --cores 10 --keep-going --rerun-incomplete --use-conda --conda-frontend conda --use-singularity -p -n -s Snakefile 
-snakemake  --cores 20 --keep-going --benchmark-extended --rerun-incomplete --use-conda --conda-frontend conda --use-singularity --configfile config_joanna.yaml -p -s Snakefile
+snakemake  --cores 20 --keep-going --benchmark-extended --rerun-incomplete --use-conda --conda-frontend conda --use-singularity --configfile config/config_hotspring.yaml -p -s Snakefile

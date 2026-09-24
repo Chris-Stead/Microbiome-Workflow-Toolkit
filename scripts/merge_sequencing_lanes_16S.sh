@@ -9,8 +9,8 @@ for SAMPLE_DIR in "${BASE_DIR}"/*/; do
     echo "processing $SAMPLE"
 
     shopt -s nullglob
-    FORWARD=("${SAMPLE_DIR}"/*_1.fastq.gz)
-    REVERSE=("${SAMPLE_DIR}"/*_2.fastq.gz)
+    FORWARD=("${SAMPLE_DIR}"/*_R1.fastq.gz)
+    REVERSE=("${SAMPLE_DIR}"/*_R2.fastq.gz)
     shopt -u nullglob
 
     # Skip folder if no FASTQs
@@ -19,13 +19,13 @@ for SAMPLE_DIR in "${BASE_DIR}"/*/; do
     # Merge all forward reads into sample_1.fastq.gz
     if [[ ${#FORWARD[@]} -gt 0 ]]; then
         echo "merging reads ${#FORWARD[@]}" 
-        zcat "${FORWARD[@]}" > "${SAMPLE_DIR}/${SAMPLE}_merged_1.fastq.gz"
+        cat "${FORWARD[@]}" > "${SAMPLE_DIR}/${SAMPLE}_merged_R1.fastq.gz"
     fi
 
     # Merge all reverse reads into sample_2.fastq.gz
     if [[ ${#REVERSE[@]} -gt 0 ]]; then
     echo "merging reads ${#REVERSE[@]}"
-        zcat "${REVERSE[@]}" > "${SAMPLE_DIR}/${SAMPLE}_merged_2.fastq.gz"
+        cat "${REVERSE[@]}" > "${SAMPLE_DIR}/${SAMPLE}_merged_R2.fastq.gz"
     fi
 done
 echo "Merging complete."
