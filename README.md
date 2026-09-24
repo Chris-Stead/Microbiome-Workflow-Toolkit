@@ -1,5 +1,92 @@
 # Bioinformatic Toolkit
 
+A collection of research bioinformatics workflows developed for high-throughput analysis of environmental microbiomes on HPC infrastructure.
+
+The toolkit integrates sequencing quality control, metagenome assembly, genome reconstruction, taxonomic classification, functional annotation and gene abundance/expression profiling.
+
+
+## Workflow Modules
+
+The toolkit comprises modular Snakemake workflows covering metagenomic and metatranscriptomic analysis, from raw sequencing reads to genome reconstruction, functional annotation and abundance profiling. Individual workflows can be enabled or disabled through configuration files according to the analytical requirements of each project.
+
+### 1. Read Processing and Assembly
+
+**Assembly — metaSPAdes (`assemble.smk`)**
+
+Processes paired-end metagenomic reads using Trimmomatic for adapter removal and quality trimming, followed by FastQC for read-quality assessment. Quality-filtered reads are assembled using metaSPAdes, with subsequent contig filtering and assembly-quality assessment using MetaQUAST.
+
+**Assembly — MEGAHIT (`assemble_megahit.smk`)**
+
+An alternative assembly workflow designed for large and complex metagenomic datasets. Integrates Trimmomatic, FastQC and MEGAHIT using the `meta-large` preset, followed by contig filtering and MetaQUAST assessment.
+
+**Quality-Control Reporting (`qc_report.smk`)**
+
+Aggregates FastQC and MetaQUAST outputs across samples using MultiQC. Produces consolidated quality-control reports to facilitate comparisons of sequencing quality and assembly statistics between samples.
+
+### 2. Genome Reconstruction and Taxonomy
+
+**Prokaryotic MAG Reconstruction (`mags.smk`)**
+
+Reconstructs metagenome-assembled genomes (MAGs) using metaWRAP, integrating MetaBAT2, MaxBin2 and CONCOCT for genome binning and refinement. Refined MAGs are classified using GTDB-Tk, while CoverM estimates genome coverage through read mapping.
+
+**Eukaryotic Genome Reconstruction (`mags_euk.smk`)**
+
+Targets the recovery of eukaryotic genomic sequences from metagenomic assemblies. EukRep separates putative eukaryotic and prokaryotic contigs, followed by CONCOCT binning through metaWRAP and taxonomic assignment of recovered bins using CAT/BAT.
+
+**Taxonomic Profiling (`kaiju.smk`)**
+
+Performs protein-level taxonomic classification of quality-filtered metagenomic reads using Kaiju and the `nr_euk` reference database. Generates community-composition summaries at multiple taxonomic ranks, including phylum, class, family and genus, alongside interactive Krona visualisations.
+
+**Standalone Taxonomic Profiling (`kaiju_only.smk`)**
+
+Provides a standalone implementation of Kaiju for taxonomic profiling of previously processed sequencing reads. Generates taxonomic abundance tables at multiple ranks without requiring the assembly workflow or additional downstream analyses.
+
+### 3. Functional Annotation and Abundance
+
+**Gene Abundance and Functional Annotation (`tpm.smk`)**
+
+Quantifies gene abundance through read mapping and functional annotation of metagenomic assemblies. Integrates MetaProkka, KofamScan, Bowtie2, SAMtools, Picard and HTSeq to generate gene counts and transcripts-per-million (TPM) values, with annotated gene-level and KEGG Orthology abundance tables.
+
+**Alternative Gene-Abundance Workflow (`tpm_1.smk`)**
+
+An alternative implementation of the TPM workflow, incorporating non-stranded gene counting with HTSeq and configurable temporary storage for Picard. Retains the core annotation, mapping and abundance calculations while accommodating different sequencing data and computational requirements.
+
+**High-Diversity Metagenomic Abundance (`tpm_high_diversity.smk`)**
+
+A variation of the gene-abundance workflow for complex metagenomic assemblies, incorporating an initial 1 kb contig-length filter. Performs gene prediction, functional annotation, read mapping and TPM quantification, generating annotated gene-abundance tables and KEGG Orthology summaries.
+
+**Metabolic Reconstruction (`metabolic.smk`)**
+
+Characterises the metabolic potential of reconstructed microbial genomes using METABOLIC-C. Integrates refined MAGs with metagenomic read data to investigate microbial metabolic pathways and their associated abundance, supporting the interpretation of biogeochemical processes within environmental microbiomes.
+
+**S3 Ribosomal Protein Abundance (`s3_abundance3.smk`)**
+
+Uses the S3 ribosomal protein as a phylogenetic marker for taxonomic abundance profiling. Combines Prodigal, KofamScan, BLAST and GTDB taxonomy to identify and classify S3 sequences, followed by CoverM read mapping to quantify their abundance within metagenomic samples.
+
+### 4. Specialised Analyses
+
+**Viral Identification (`viruses.smk`)**
+
+Identifies viral sequences within metagenomic assemblies using geNomad. Performs sequence classification and score calibration to support the detection and characterisation of viral genetic elements within environmental microbiomes.
+
+**Mobilome Characterisation (`mobilome.smk`)**
+
+Characterises mobile genetic elements within metagenomic assemblies using geNomad. Separates contigs into chromosomal, viral, plasmid and unclassified categories, then uses SeqKit and CoverM to extract sequences and estimate their relative abundance across the metagenomic dataset.
+
+**Biosynthetic Gene Clusters (`bgc.smk`)**
+
+Identifies and characterises biosynthetic gene clusters within metagenomic assemblies using antiSMASH. Incorporates gene prediction and known-cluster comparisons to investigate the biosynthetic potential of environmental microbial communities.
+
+**Metagenomic Diversity (`diversity.smk`)**
+
+Estimates metagenomic sequencing coverage and sequence diversity using Nonpareil. Integrates k-mer-based and alignment-based analyses to evaluate sequencing redundancy and estimate the extent to which microbial community diversity has been sampled.
+
+## Workflow architecture
+
+![Snakemake workflow](full_workflow_rulegraph.svg)
+
+## General usage
+
 Ensure all the following commands are done from the bioinformatics toolkit directory, to get to this use. 
 ```
 cd /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit
