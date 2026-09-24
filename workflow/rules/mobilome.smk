@@ -1,6 +1,6 @@
 #Snakemake module for annotating and pooling mobile from non mobile genetic elements
 
-rule genomad_end_to_end:
+rule mobilome_genomad:
     input:
         contigs=f"{config['output_dir']}/{{sample}}_contigs_filtered.fa"
     output:
@@ -24,9 +24,9 @@ rule categorise_contigs:
         plasmid_list=f"{config['output_dir']}/{{sample}}_mobilome/plasmid_sequences.tsv",
         unknown_a_list=f"{config['output_dir']}/{{sample}}_mobilome/unknown_a_sequences.tsv"
     threads: 1
-    conda: 'conda_envs/bioconda_environment.yml'
+    conda: '../../conda_envs/bioconda_environment.yml'
     benchmark: f"{config['benchmark_dir']}/mobilome_categorise_contigs_{{sample}}.tsv"
-    script: 'scripts/genomad_classify1.py'
+    script: '../../scripts/genomad_classify1.py'
 
 rule pools:
     input:

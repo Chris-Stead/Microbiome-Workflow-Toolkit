@@ -13,7 +13,7 @@
 rule filter_seq:
     input: f"{config['output_dir']}/{{sample}}_assembly/contigs.fasta"
     output: f"{config['output_dir']}/{{sample}}_tpm/{{sample}}_scaffold_filtered.fa"
-    threads: 1
+    threads: 2
     shell: 
         'python /mnt/seaes01-data01/nixon-microbiome/shared/scripts/pullseq_python3.py -i {input} -o {output} -m 1'
 

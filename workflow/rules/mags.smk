@@ -28,7 +28,7 @@ rule metawrap_bin:
         rev_symlink=f"{config['output_dir']}/temp/{{sample}}_sym_2.fastq"
     output:
         mag_folder=directory(f"{config['output_dir']}/{{sample}}_mags_bins"),
-	concoct_dir=directory(f"{config['output_dir']}/{{sample}}_mags_bins/concoct_bins"),
+        concoct_dir=directory(f"{config['output_dir']}/{{sample}}_mags_bins/concoct_bins"),
         maxbin2_dir=directory(f"{config['output_dir']}/{{sample}}_mags_bins/maxbin2_bins"),
         metabat_dir=directory(f"{config['output_dir']}/{{sample}}_mags_bins/metabat2_bins")
     singularity:f"{config['containers_dir']}/metawrap/metawrap-1.3.0_EC_build.sif"
@@ -47,9 +47,9 @@ rule bin_refinement:
         concoct=f"{config['output_dir']}/{{sample}}_mags_bins/concoct_bins",
         maxbin2=f"{config['output_dir']}/{{sample}}_mags_bins/maxbin2_bins",
         metabat=f"{config['output_dir']}/{{sample}}_mags_bins/metabat2_bins"
-    output: 
-        refined_mag_directory=directory(f"{config['output_dir']}/{{sample}}_refined_mag_directory"),
-	refined_mag_directory_bins=directory(f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_70_10_bins")
+    output:
+        refined_mag_directory=directory(f"{config['output_dir']}/{{sample}}_refined_mag_directory"), 
+        refined_mag_directory_bins=directory(f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_70_10_bins")
     singularity:f"{config['containers_dir']}/metawrap/metawrap-1.3.0_EC_build.sif"
     benchmark: f"{config['benchmark_dir']}/mags_bin_refinment_{{sample}}.tsv"
     threads: 5
@@ -73,7 +73,7 @@ rule gtdbtk:
         gtdbtk_temp=f"{config['output_dir']}/{{sample}}_gtdbtk_temporary_directory"
     output:
         taxonomy=directory(f"{config['output_dir']}/{{sample}}_gtdbtk"),
-	mash_db=f"{config['output_dir']}/{{sample}}_gtdbtk_mash_db"
+        mash_db=f"{config['output_dir']}/{{sample}}_gtdbtk_mash_db"
     singularity: f"{config['containers_dir']}/gtdbtk/gtdbtk_2.4.1--pyhdfd78af_1"
     threads: 5
     shell:
@@ -94,7 +94,7 @@ rule coverm:
         forward=f"{config['output_dir']}/{{sample}}_forward_paired.fq",
         rev=f"{config['output_dir']}/{{sample}}_reverse_paired.fq",
         refined_mag_directory=f"{config['output_dir']}/{{sample}}_refined_mag_directory",
-	refined_mag_directory_bins=f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_70_10_bins"
+        refined_mag_directory_bins=f"{config['output_dir']}/{{sample}}_refined_mag_directory/metawrap_70_10_bins"
     output:
         coverage=f"{config['output_dir']}/{{sample}}_coverm_coverage.tsv"
     singularity: f"{config['containers_dir']}/coverm/coverm.sif"

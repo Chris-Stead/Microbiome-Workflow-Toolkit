@@ -120,8 +120,8 @@ rule blast_S3_merge:
         blast_list_sorted_matched=f"{config['output_dir']}/{{sample}}_S3/{{sample}}_blast_sorted_matched.txt"
     threads: 1
     benchmark: f"{config['benchmark_dir']}/s3_abundance_blast_s3_merge_{{sample}}.tsv"
-    conda: 'conda_envs/python_pandas.yml'
-    script: 'scripts/blast_merge_taxonomy.py'
+    conda: '../../conda_envs/python_pandas.yml'
+    script: '../../scripts/blast_merge_taxonomy.py'
 
 rule gene_ID_sort:
     input:
@@ -156,8 +156,8 @@ rule ammened_fasta_names1:
         annotated_s3_genes=f"{config['output_dir']}/{{sample}}_S3/{{sample}}_annotated_s3_genes.fasta"
     threads: 1
     benchmark: f"{config['benchmark_dir']}/s3_abundance_ammend_fasta_names1_{{sample}}.tsv"
-    conda: 'conda_envs/bioconda_environment.yml'
-    script: 'scripts/S3_concat_taxonomy2.py'
+    conda: '../../conda_envs/bioconda_environment.yml'
+    script: '../../scripts/S3_concat_taxonomy2.py'
 
 rule ammened_fasta_names2:
     input:
