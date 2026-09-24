@@ -14,11 +14,11 @@ The toolkit comprises modular Snakemake workflows covering metagenomic and metat
 
 ### 1. Read Processing and Assembly
 
-**Assembly — metaSPAdes (`assemble.smk`)**
+**Assembly metaSPAdes (`assemble.smk`)**
 
 Processes paired-end metagenomic reads using Trimmomatic for adapter removal and quality trimming, followed by FastQC for read-quality assessment. Quality-filtered reads are assembled using metaSPAdes, with subsequent contig filtering and assembly-quality assessment using MetaQUAST.
 
-**Assembly — MEGAHIT (`assemble_megahit.smk`)**
+**Assembly MEGAHIT (`assemble_megahit.smk`)**
 
 An alternative assembly workflow designed for large and complex metagenomic datasets. Integrates Trimmomatic, FastQC and MEGAHIT using the `meta-large` preset, followed by contig filtering and MetaQUAST assessment.
 
