@@ -19,13 +19,13 @@ for SAMPLE_DIR in "${BASE_DIR}"/*/; do
     # Merge all forward reads into sample_1.fastq.gz
     if [[ ${#FORWARD[@]} -gt 0 ]]; then
         echo "merging reads ${#FORWARD[@]}" 
-        zcat "${FORWARD[@]}" > "${SAMPLE_DIR}/${SAMPLE}_merged_1.fastq.gz"
+        zcat "${FORWARD[@]}" | gzip > "${SAMPLE_DIR}/${SAMPLE}_merged_1.fastq.gz"
     fi
 
     # Merge all reverse reads into sample_2.fastq.gz
     if [[ ${#REVERSE[@]} -gt 0 ]]; then
     echo "merging reads ${#REVERSE[@]}"
-        zcat "${REVERSE[@]}" > "${SAMPLE_DIR}/${SAMPLE}_merged_2.fastq.gz"
+        zcat "${REVERSE[@]}" | gzip > "${SAMPLE_DIR}/${SAMPLE}_merged_2.fastq.gz"
     fi
 done
 echo "Merging complete."
