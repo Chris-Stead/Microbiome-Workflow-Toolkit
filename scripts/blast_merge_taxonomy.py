@@ -5,7 +5,7 @@ blast_file = snakemake.input.blast_list_sorted
 taxonomy_file = snakemake.input.taxonomy_file
 output_file = snakemake.output.blast_list_sorted_matched
 
-# Define column names (assuming you're using the expanded BLAST outfmt we designed)
+# Define column names
 blast_cols = [
     "taxon_ID", "S3_Gene", "percent_ID", "Alignment_Length", "Mismatch", "Gap",
     "Q_Start", "Q_End", "S_Start", "S_End", "E_value", "Bit_Score",
