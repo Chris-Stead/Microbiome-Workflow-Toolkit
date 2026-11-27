@@ -81,7 +81,7 @@ cd /mnt/seaes01-data01/nixon-microbiome/shared/bioinformatic_toolkit
 Note - a drawback to the current setup is that only one person can run the toolkit at one time though an unlimited number of samples can be run.
 
 ----------------------
-## FOR USE ON THE SERVER 
+## FOR USE ON THE EDGE COMPUTE SERVER 
 
 Create a snakemake environment (only needs to be created once, the environment persists when logging off).
 ```
